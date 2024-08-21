@@ -9,6 +9,8 @@ class archive_players(Screen):
         super().__init__(**kwargs)
         bl = BoxLayout()
         
+        
+        
         archive = Button(text="Назад")
         archive.bind(on_release=self.switch_archive)
         bl.add_widget(archive)

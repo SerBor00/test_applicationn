@@ -3,6 +3,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import Screen
 from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
+from database import path_db
 import sqlite3
 
 class player_plus(Screen):
@@ -39,10 +40,15 @@ class player_plus(Screen):
         self.manager.current = "Главная"
         
     def checkpoint_info(self, *args):
-        conn = sqlite3.connect("sqlite3.db")
+        name = self.namer.text
+        date = self.date.text
+        gender = self.gender.text
+        
+        
+        conn = sqlite3.connect(path_db())
         cursor = conn.cursor()
         
-        cursor.execute("INSERT INTO players (first_and_second_name, date_of_born, gender) VALUES (?, ?, ?)", (self.namer, self.date, self.gender))
+        cursor.execute("INSERT INTO players (first_and_second_name, date_of_born, gender) VALUES (?, ?, ?)", (name, date, gender))
 
         conn.commit()
         conn.close()
