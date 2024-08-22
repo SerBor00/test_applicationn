@@ -8,7 +8,7 @@ import sqlite3
 class archive_players(Screen):
     def __init__ (self, **kwargs):
         super().__init__(**kwargs)
-        bl = BoxLayout()       
+        bl = BoxLayout()
         
         conn = sqlite3.connect(path_db())
         cursor = conn.cursor()
