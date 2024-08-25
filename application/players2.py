@@ -547,6 +547,7 @@ class players2(Screen):
 
     def math_operation(self, *args):
         
+        flag = True
         sum_dro = 0
         sum_take = 0
         sum_guard = 0
@@ -566,39 +567,47 @@ class players2(Screen):
         
         for i in range(len(listik)):
             if listik[i] == "":
-                helper = i+1
+                helper = i
                 break
+            elif len(listik[i]) > 1:
+                flag = False
             else:
                 listik[i] = int(listik[i])
                 continue
+        else:
+            helper = len(listik)
             
-                
-        listik = listik[:helper-1]
-        type_listik = type_listik[:helper-1]
+        if len(listik) - (listik.count("") + helper) == 0 and helper != 0 and flag == True:
+            
+            listik = listik[:helper]
+            type_listik = type_listik[:helper]
         
-        for i in range(len(type_listik)):
-            if type_listik[i] == "D":
-                sum_dro += listik[i]
-                continue
-            if type_listik[i] == "T":
-                sum_take += listik[i]
-                continue
-            if type_listik[i] == "G":
-                sum_guard += listik[i]
-                continue
+            for i in range(len(type_listik)):
+                if type_listik[i] == "D":
+                    sum_dro += listik[i]
+                    continue
+                if type_listik[i] == "T":
+                    sum_take += listik[i]
+                    continue
+                if type_listik[i] == "G":
+                    sum_guard += listik[i]
+                    continue
         
-        helper = round(sum(listik) / (helper*4) * 100, 2)
-        if sum_dro != 0:
-            sum_dro = round(sum_dro / (type_listik.count("D")*4) * 100,)
-        if sum_take != 0:
-            sum_take = round(sum_take / (type_listik.count("T")*4) * 100, 2)
-        if sum_guard != 0:
-            sum_guard = round(sum_guard / (type_listik.count("G")*4) * 100, 2)
+            helper = round(sum(listik) / (helper*4) * 100, 2)
+            if sum_dro != 0:
+                sum_dro = round(sum_dro / (type_listik.count("D")*4) * 100,)
+            if sum_take != 0:
+                sum_take = round(sum_take / (type_listik.count("T")*4) * 100, 2)
+            if sum_guard != 0:
+                sum_guard = round(sum_guard / (type_listik.count("G")*4) * 100, 2)
         
-        self.final_percentage_1.text = f"Процент: {helper}"
-        self.types_throw_1.text = f"Dro: {sum_dro}, Take: {sum_take}, Guard: {sum_guard}"
+            self.final_percentage_1.text = f"Процент: {helper}"
+            self.types_throw_1.text = f"Dro: {sum_dro} \nTake: {sum_take} \nGuard: {sum_guard}"
+        else:
+            self.final_percentage_1.text = f"Ошибка, {helper}"
+            self.types_throw_1.text = ""
         
-        
+        flag = True
         sum_dro = 0
         sum_take = 0
         sum_guard = 0
@@ -619,34 +628,42 @@ class players2(Screen):
         
         for i in range(len(listik)):
             if listik[i] == "":
-                helper = i+1
+                helper = i
                 break
+            elif len(listik[i]) > 1:
+                flag = False
             else:
                 listik[i] = int(listik[i])
                 continue
+        else:
+            helper = len(listik)
             
-                
-        listik = listik[:helper-1]
-        type_listik = type_listik[:helper-1]
+        if len(listik) - (listik.count("") + helper) == 0 and helper != 0 and flag == True:
+            
+            listik = listik[:helper]
+            type_listik = type_listik[:helper]
         
-        for i in range(len(type_listik)):
-            if type_listik[i] == "D":
-                sum_dro += listik[i]
-                continue
-            if type_listik[i] == "T":
-                sum_take += listik[i]
-                continue
-            if type_listik[i] == "G":
-                sum_guard += listik[i]
-                continue
+            for i in range(len(type_listik)):
+                if type_listik[i] == "D":
+                    sum_dro += listik[i]
+                    continue
+                if type_listik[i] == "T":
+                    sum_take += listik[i]
+                    continue
+                if type_listik[i] == "G":
+                    sum_guard += listik[i]
+                    continue
         
-        helper = round(sum(listik) / (helper*4) * 100, 2)
-        if sum_dro != 0:
-            sum_dro = round(sum_dro / (type_listik.count("D")*4) * 100,)
-        if sum_take != 0:
-            sum_take = round(sum_take / (type_listik.count("T")*4) * 100, 2)
-        if sum_guard != 0:
-            sum_guard = round(sum_guard / (type_listik.count("G")*4) * 100, 2)
+            helper = round(sum(listik) / (helper*4) * 100, 2)
+            if sum_dro != 0:
+                sum_dro = round(sum_dro / (type_listik.count("D")*4) * 100,)
+            if sum_take != 0:
+                sum_take = round(sum_take / (type_listik.count("T")*4) * 100, 2)
+            if sum_guard != 0:
+                sum_guard = round(sum_guard / (type_listik.count("G")*4) * 100, 2)
         
-        self.final_percentage_2.text = f"Процент: {helper}"
-        self.types_throw_2.text = f"Dro: {sum_dro}, Take: {sum_take}, Guard: {sum_guard}"
+            self.final_percentage_2.text = f"Процент: {helper}"
+            self.types_throw_2.text = f"Dro: {sum_dro} \nTake: {sum_take} \nGuard: {sum_guard}"
+        else:
+            self.final_percentage_2.text = f"Ошибка, {helper}"
+            self.types_throw_2.text = ""
