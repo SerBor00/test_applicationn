@@ -1,6 +1,7 @@
 from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.screenmanager import Screen
 from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
@@ -14,7 +15,7 @@ class players2(Screen):
         bl = BoxLayout(size_hint_y=None, height= 300) #height=300
         gl = GridLayout(cols= 2 , spacing=(15 , 5) , padding= (60 , 1 , 1 , 1))
         gl2 = GridLayout(cols=5, rows=39, spacing=(15 , 5), padding= 1, size_hint_y=None, height= 2700) #height=1200
-        self.bl2 = BoxLayout(size_hint_y=None, height= 200) #height=200
+        fl2 = FloatLayout(size_hint_y=None, height= 200) #height=200
         main_bl = BoxLayout(size_hint=(1, None), height=3330) #height=1830
         
         bl.add_widget(Label(text= "Название команды" , color = "#02034e", size_hint_y=None, height= 32 , font_size =28 ))
@@ -504,18 +505,30 @@ class players2(Screen):
         self.extra_nine_2_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.extra_nine_2_button)
         
-        end = Button(text= "Рассчёт")
+        fl2.add_widget(Button(text="test"))
+        
+        self.final_percentage_1 = Label(text="", pos=(20, 40))
+        self.types_throw_1 = Label(text="", pos=(20, -20))
+        self.final_percentage_2 = Label(text="", pos=(120, 40))
+        self.types_throw_2 = Label(text="", pos=(120, -20))
+        
+        fl2.add_widget(self.final_percentage_1)
+        fl2.add_widget(self.types_throw_1)
+        fl2.add_widget(self.final_percentage_2)
+        fl2.add_widget(self.types_throw_2)
+        
+        end = Button(text= "Рассчёт", pos=(0, 90))
         end.bind(on_release=self.math_operation)
-        self.bl2.add_widget(end)
+        fl2.add_widget(end)
         
         match_plus = Button(text= "Назад")
         match_plus.bind(on_release=self.switch_match_plus)
-        self.bl2.add_widget(match_plus)
+        fl2.add_widget(match_plus)
         
         main_bl.add_widget(bl)
         main_bl.add_widget(gl)
         main_bl.add_widget(gl2)
-        main_bl.add_widget(self.bl2)
+        main_bl.add_widget(fl2)
         
         scroll = ScrollView()
         scroll.add_widget(main_bl)
@@ -534,12 +547,16 @@ class players2(Screen):
 
     def math_operation(self, *args):
         
+        sum_dro = 0
+        sum_take = 0
+        sum_guard = 0
+        
         helper = 0
         listik = [self.one_1.text, self.two_1.text, self.three_1.text, self.four_1.text, self.five_1.text, self.six_1.text, self.seven_1.text, self.eight_1.text, self.nine_1.text, self.one_zero_1.text,
-                  self.one_one_1.text, self.one_two_1.text, self.one_three_1.text, self.one_four_1.text, self.one_five_1.text, self.one_six_1.text, self.one_eight_1.text, self.one_nine_1.text,
-                  self.two_zero_1.text, self.two_two_1.text, self.two_three_1.text, self.two_four_1.text, self.two_five_1.text, self.two_six_1.text, self.two_seven_1.text, self.two_eight_1.text,
+                  self.one_one_1.text, self.one_two_1.text, self.one_three_1.text, self.one_four_1.text, self.one_five_1.text, self.one_six_1.text, self.one_seven_1.text, self.one_eight_1.text, self.one_nine_1.text,
+                  self.two_zero_1.text, self.two_one_1.text, self.two_two_1.text, self.two_three_1.text, self.two_four_1.text, self.two_five_1.text, self.two_six_1.text, self.two_seven_1.text, self.two_eight_1.text,
                   self.two_nine_1.text, self.three_zero_1.text, self.extra_one_1.text, self.extra_two_1.text, self.extra_three_1.text, self.extra_four_1.text, self.extra_five_1.text,
-                  self.extra_six_1.text, self.extra_seven_1.text, self.extra_eight_1.text, self.extra_eight_1.text, self.extra_nine_1.text]
+                  self.extra_six_1.text, self.extra_seven_1.text, self.extra_eight_1.text, self.extra_nine_1.text]
         
         type_listik = [self.one_1_button.text, self.two_1_button.text, self.three_1_button.text, self.four_1_button.text, self.five_1_button.text, self.six_1_button.text, self.seven_1_button.text, self.eight_1_button.text, self.nine_1_button.text,
                        self.one_zero_1_button.text, self.one_one_1_button.text, self.one_two_1_button.text, self.one_three_1_button.text, self.one_four_1_button.text, self.one_five_1_button.text, self.one_six_1_button.text, self.one_seven_1_button.text,
@@ -554,13 +571,82 @@ class players2(Screen):
             else:
                 listik[i] = int(listik[i])
                 continue
+            
                 
         listik = listik[:helper-1]
         type_listik = type_listik[:helper-1]
         
-        helper = sum(listik) / (helper*4) * 100
-        self.bl2.add_widget(Label(text=f"{listik}"))
-        self.bl2.add_widget(Label(text=f"{type_listik}"))
-        self.bl2.add_widget(Label(text=f"{helper}"))
+        for i in range(len(type_listik)):
+            if type_listik[i] == "D":
+                sum_dro += listik[i]
+                continue
+            if type_listik[i] == "T":
+                sum_take += listik[i]
+                continue
+            if type_listik[i] == "G":
+                sum_guard += listik[i]
+                continue
+        
+        helper = round(sum(listik) / (helper*4) * 100, 2)
+        if sum_dro != 0:
+            sum_dro = round(sum_dro / (type_listik.count("D")*4) * 100,)
+        if sum_take != 0:
+            sum_take = round(sum_take / (type_listik.count("T")*4) * 100, 2)
+        if sum_guard != 0:
+            sum_guard = round(sum_guard / (type_listik.count("G")*4) * 100, 2)
+        
+        self.final_percentage_1.text = f"Процент: {helper}"
+        self.types_throw_1.text = f"Dro: {sum_dro}, Take: {sum_take}, Guard: {sum_guard}"
         
         
+        sum_dro = 0
+        sum_take = 0
+        sum_guard = 0
+        
+        helper = 0
+        
+        listik = [self.one_2.text, self.two_2.text, self.three_2.text, self.four_2.text, self.five_2.text, self.six_2.text, self.seven_2.text, self.eight_2.text, self.nine_2.text, self.one_zero_2.text,
+                  self.one_one_2.text, self.one_two_2.text, self.one_three_2.text, self.one_four_2.text, self.one_five_2.text, self.one_six_2.text, self.one_seven_2.text, self.one_eight_2.text, self.one_nine_2.text,
+                  self.two_zero_2.text, self.two_one_2.text, self.two_two_2.text, self.two_three_2.text, self.two_four_2.text, self.two_five_2.text, self.two_six_2.text, self.two_seven_2.text, self.two_eight_2.text,
+                  self.two_nine_2.text, self.three_zero_2.text, self.extra_one_2.text, self.extra_two_2.text, self.extra_three_2.text, self.extra_four_2.text, self.extra_five_2.text,
+                  self.extra_six_2.text, self.extra_seven_2.text, self.extra_eight_2.text, self.extra_nine_2.text]
+        
+        type_listik = [self.one_2_button.text, self.two_2_button.text, self.three_2_button.text, self.four_2_button.text, self.five_2_button.text, self.six_2_button.text, self.seven_2_button.text, self.eight_2_button.text, self.nine_2_button.text,
+                       self.one_zero_2_button.text, self.one_one_2_button.text, self.one_two_2_button.text, self.one_three_2_button.text, self.one_four_2_button.text, self.one_five_2_button.text, self.one_six_2_button.text, self.one_seven_2_button.text,
+                       self.one_eight_2_button.text, self.one_nine_2_button.text, self.two_zero_2_button.text, self.two_one_2_button.text, self.two_two_2_button.text, self.two_three_2_button.text, self.two_four_2_button.text, self.two_five_2_button.text,
+                       self.two_six_2_button.text, self.two_seven_2_button.text, self.two_eight_2_button.text, self.two_nine_2_button.text, self.three_zero_2_button.text, self.extra_one_2_button.text, self.extra_two_2_button.text, self.extra_three_2_button.text,
+                       self.extra_four_2_button.text, self.extra_five_2_button.text, self.extra_six_2_button.text, self.extra_seven_2_button.text, self.extra_eight_2_button.text, self.extra_nine_2_button.text]
+        
+        for i in range(len(listik)):
+            if listik[i] == "":
+                helper = i+1
+                break
+            else:
+                listik[i] = int(listik[i])
+                continue
+            
+                
+        listik = listik[:helper-1]
+        type_listik = type_listik[:helper-1]
+        
+        for i in range(len(type_listik)):
+            if type_listik[i] == "D":
+                sum_dro += listik[i]
+                continue
+            if type_listik[i] == "T":
+                sum_take += listik[i]
+                continue
+            if type_listik[i] == "G":
+                sum_guard += listik[i]
+                continue
+        
+        helper = round(sum(listik) / (helper*4) * 100, 2)
+        if sum_dro != 0:
+            sum_dro = round(sum_dro / (type_listik.count("D")*4) * 100,)
+        if sum_take != 0:
+            sum_take = round(sum_take / (type_listik.count("T")*4) * 100, 2)
+        if sum_guard != 0:
+            sum_guard = round(sum_guard / (type_listik.count("G")*4) * 100, 2)
+        
+        self.final_percentage_2.text = f"Процент: {helper}"
+        self.types_throw_2.text = f"Dro: {sum_dro}, Take: {sum_take}, Guard: {sum_guard}"
