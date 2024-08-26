@@ -12,16 +12,11 @@ cursor.execute("""
     )
 """)
 
-cursor.execute(""" 
-    CREATE TABLE IF NOT EXISTS match_info (
-        name_of_team VARCHAR(50) NOT NULL,
-        name_of_game VARCHAR(200) NOT NULL,
-        date_of_game DATE NOT NULL
-    )
-""")
-
 cursor.execute("""
     CREATE TABLE IF NOT EXISTS match_players_info (
+        name_of_team VARCHAR(50) NOT NULL,
+        name_of_game VARCHAR(200) NOT NULL,
+        date_of_game DATE NOT NULL,
         first_and_second_name_1 VARCHAR(100) NOT NULL,
         first_and_second_name_2 VARCHAR(100) NOT NULL,
         first_and_second_name_3 VARCHAR(100),
@@ -76,6 +71,8 @@ cursor.execute("""
 
     )
 """)
+
+
 
 def path_db ():
     current_dir = os.path.dirname(os.path.abspath(__file__))
