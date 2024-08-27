@@ -996,6 +996,11 @@ class players5(Screen):
 
     def math_operation(self, *args):
         
+        name_list = [self.name_1, self.name_2, self.name_3, self.name_4, self.name_5]
+        
+        conn = sqlite3.connect(path_db())
+        cursor = conn.cursor()
+        
         flag = True
         end_count = 0
         sum_dro = 0
@@ -1003,354 +1008,116 @@ class players5(Screen):
         sum_guard = 0
         
         helper = 0
-        listik = [self.one_1.text, self.two_1.text, self.three_1.text, self.four_1.text, self.five_1.text, self.six_1.text, self.seven_1.text, self.eight_1.text, self.nine_1.text, self.one_zero_1.text,
-                  self.one_one_1.text, self.one_two_1.text, self.one_three_1.text, self.one_four_1.text, self.one_five_1.text, self.one_six_1.text, self.one_seven_1.text, self.one_eight_1.text, self.one_nine_1.text,
-                  self.two_zero_1.text, self.extra_one_1.text, self.extra_two_1.text, self.extra_three_1.text, self.extra_four_1.text, self.extra_five_1.text, self.extra_six_1.text]
         
-        type_listik = [self.one_1_button.text, self.two_1_button.text, self.three_1_button.text, self.four_1_button.text, self.five_1_button.text, self.six_1_button.text, self.seven_1_button.text, self.eight_1_button.text, self.nine_1_button.text,
+        listik = [[self.one_1.text, self.two_1.text, self.three_1.text, self.four_1.text, self.five_1.text, self.six_1.text, self.seven_1.text, self.eight_1.text, self.nine_1.text, self.one_zero_1.text,
+                  self.one_one_1.text, self.one_two_1.text, self.one_three_1.text, self.one_four_1.text, self.one_five_1.text, self.one_six_1.text, self.one_seven_1.text, self.one_eight_1.text, self.one_nine_1.text,
+                  self.two_zero_1.text, self.extra_one_1.text, self.extra_two_1.text, self.extra_three_1.text, self.extra_four_1.text, self.extra_five_1.text, self.extra_six_1.text], [self.one_2.text, self.two_2.text, self.three_2.text, self.four_2.text, self.five_2.text, self.six_2.text, self.seven_2.text, self.eight_2.text, self.nine_2.text, self.one_zero_2.text,
+                  self.one_one_2.text, self.one_two_2.text, self.one_three_2.text, self.one_four_2.text, self.one_five_2.text, self.one_six_2.text, self.one_seven_2.text, self.one_eight_2.text, self.one_nine_2.text,
+                  self.two_zero_2.text, self.extra_one_2.text, self.extra_two_2.text, self.extra_three_2.text, self.extra_four_2.text, self.extra_five_2.text, self.extra_six_2.text], [self.one_3.text, self.two_3.text, self.three_3.text, self.four_3.text, self.five_3.text, self.six_3.text, self.seven_3.text, self.eight_3.text, self.nine_3.text, self.one_zero_3.text,
+                  self.one_one_3.text, self.one_two_3.text, self.one_three_3.text, self.one_four_3.text, self.one_five_3.text, self.one_six_3.text, self.one_seven_3.text, self.one_eight_3.text, self.one_nine_3.text,
+                  self.two_zero_3.text, self.extra_one_3.text, self.extra_two_3.text, self.extra_three_3.text, self.extra_four_3.text, self.extra_five_3.text, self.extra_six_3.text], [self.one_4.text, self.two_4.text, self.three_4.text, self.four_4.text, self.five_4.text, self.six_4.text, self.seven_4.text, self.eight_4.text, self.nine_4.text, self.one_zero_4.text,
+                  self.one_one_4.text, self.one_two_4.text, self.one_three_4.text, self.one_four_4.text, self.one_five_4.text, self.one_six_4.text, self.one_seven_4.text, self.one_eight_4.text, self.one_nine_4.text,
+                  self.two_zero_4.text, self.extra_one_4.text, self.extra_two_4.text, self.extra_three_4.text, self.extra_four_4.text, self.extra_five_4.text, self.extra_six_4.text], [self.one_5.text, self.two_5.text, self.three_5.text, self.four_5.text, self.five_5.text, self.six_5.text, self.seven_5.text, self.eight_5.text, self.nine_5.text, self.one_zero_5.text,
+                  self.one_one_5.text, self.one_two_5.text, self.one_three_5.text, self.one_four_5.text, self.one_five_5.text, self.one_six_5.text, self.one_seven_5.text, self.one_eight_5.text, self.one_nine_5.text,
+                  self.two_zero_5.text, self.extra_one_5.text, self.extra_two_5.text, self.extra_three_5.text, self.extra_four_5.text, self.extra_five_5.text, self.extra_six_5.text]]
+        
+        type_listik = [[self.one_1_button.text, self.two_1_button.text, self.three_1_button.text, self.four_1_button.text, self.five_1_button.text, self.six_1_button.text, self.seven_1_button.text, self.eight_1_button.text, self.nine_1_button.text,
                        self.one_zero_1_button.text, self.one_one_1_button.text, self.one_two_1_button.text, self.one_three_1_button.text, self.one_four_1_button.text, self.one_five_1_button.text, self.one_six_1_button.text, self.one_seven_1_button.text,
                        self.one_eight_1_button.text, self.one_nine_1_button.text, self.two_zero_1_button.text, self.extra_one_1_button.text, self.extra_two_1_button.text, self.extra_three_1_button.text,
-                       self.extra_four_1_button.text, self.extra_five_1_button.text, self.extra_six_1_button.text]
-        
-        end_list = [self.end_one_1, self.end_two_1, self.end_three_1, self.end_four_1, self.end_five_1, self.end_six_1, self.end_seven_1, self.end_eight_1, self.end_nine_1, self.end_ten_1, 
-                    self.extra_end_one_1, self.extra_end_two_1, self.extra_end_three_1]
-        
-        for i in range(len(listik)):
-            if listik[i] == "":
-                helper = i
-                break
-            elif len(listik[i]) > 1:
-                flag = False
-            else:
-                listik[i] = int(listik[i])
-                continue
-        else:
-            helper = len(listik)
-            
-        if len(listik) - (listik.count("") + helper) == 0 and helper != 0 and flag == True:
-            
-            if helper != len(listik):
-                end_list = end_list[:helper//2]
-            else:
-                end_list = end_list[:len(listik)//2]
-            listik = listik[:helper]
-            type_listik = type_listik[:helper]
-        
-            for i in range(len(type_listik)):
-                end_count += listik[i]
-                if i % 2 == 1:
-                    end_count = round(end_count / 8 * 100, 2)
-                    end_list[(i-1)//2].text = f"{end_count}"
-                    end_count = 0
-                
-                if type_listik[i] == "D":
-                    sum_dro += listik[i]
-                    continue
-                if type_listik[i] == "T":
-                    sum_take += listik[i]
-                    continue
-                if type_listik[i] == "G":
-                    sum_guard += listik[i]
-                    continue
-        
-            helper = round(sum(listik) / (helper*4) * 100, 2)
-            if sum_dro != 0:
-                sum_dro = round(sum_dro / (type_listik.count("D")*4) * 100,)
-            if sum_take != 0:
-                sum_take = round(sum_take / (type_listik.count("T")*4) * 100, 2)
-            if sum_guard != 0:
-                sum_guard = round(sum_guard / (type_listik.count("G")*4) * 100, 2)
-        
-            self.final_percentage_1.text = f"Процент: {helper}"
-            self.types_throw_1.text = f"Dro: {sum_dro} \nTake: {sum_take} \nGuard: {sum_guard}"
-        else:
-            self.final_percentage_1.text = f"Ошибка, {helper}"
-            self.types_throw_1.text = ""
-        
-        flag = True
-        end_count = 0
-        sum_dro = 0
-        sum_take = 0
-        sum_guard = 0
-        
-        helper = 0
-        
-        listik = [self.one_2.text, self.two_2.text, self.three_2.text, self.four_2.text, self.five_2.text, self.six_2.text, self.seven_2.text, self.eight_2.text, self.nine_2.text, self.one_zero_2.text,
-                  self.one_one_2.text, self.one_two_2.text, self.one_three_2.text, self.one_four_2.text, self.one_five_2.text, self.one_six_2.text, self.one_seven_2.text, self.one_eight_2.text, self.one_nine_2.text,
-                  self.two_zero_2.text, self.extra_one_2.text, self.extra_two_2.text, self.extra_three_2.text, self.extra_four_2.text, self.extra_five_2.text, self.extra_six_2.text]
-        
-        type_listik = [self.one_2_button.text, self.two_2_button.text, self.three_2_button.text, self.four_2_button.text, self.five_2_button.text, self.six_2_button.text, self.seven_2_button.text, self.eight_2_button.text, self.nine_2_button.text,
+                       self.extra_four_1_button.text, self.extra_five_1_button.text, self.extra_six_1_button.text], [self.one_2_button.text, self.two_2_button.text, self.three_2_button.text, self.four_2_button.text, self.five_2_button.text, self.six_2_button.text, self.seven_2_button.text, self.eight_2_button.text, self.nine_2_button.text,
                        self.one_zero_2_button.text, self.one_one_2_button.text, self.one_two_2_button.text, self.one_three_2_button.text, self.one_four_2_button.text, self.one_five_2_button.text, self.one_six_2_button.text, self.one_seven_2_button.text,
                        self.one_eight_2_button.text, self.one_nine_2_button.text, self.two_zero_2_button.text, self.extra_one_2_button.text, self.extra_two_2_button.text, self.extra_three_2_button.text,
-                       self.extra_four_2_button.text, self.extra_five_2_button.text, self.extra_six_2_button.text]
-        
-        end_list = [self.end_one_2, self.end_two_2, self.end_three_2, self.end_four_2, self.end_five_2, self.end_six_2, self.end_seven_2, self.end_eight_2, self.end_nine_2, self.end_ten_2, 
-                    self.extra_end_one_2, self.extra_end_two_2, self.extra_end_three_2]
-        
-        for i in range(len(listik)):
-            if listik[i] == "":
-                helper = i
-                break
-            elif len(listik[i]) > 1:
-                flag = False
-            else:
-                listik[i] = int(listik[i])
-                continue
-        else:
-            helper = len(listik)
-            
-        if len(listik) - (listik.count("") + helper) == 0 and helper != 0 and flag == True:
-            
-            if helper != len(listik):
-                end_list = end_list[:helper//2]
-            else:
-                end_list = end_list[:len(listik)//2]
-            listik = listik[:helper]
-            type_listik = type_listik[:helper]
-        
-            for i in range(len(type_listik)):
-                end_count += listik[i]
-                if i % 2 == 1:
-                    end_count = round(end_count / 8 * 100, 2)
-                    end_list[(i-1)//2].text = f"{end_count}"
-                    end_count = 0
-                    
-                if type_listik[i] == "D":
-                    sum_dro += listik[i]
-                    continue
-                if type_listik[i] == "T":
-                    sum_take += listik[i]
-                    continue
-                if type_listik[i] == "G":
-                    sum_guard += listik[i]
-                    continue
-        
-            helper = round(sum(listik) / (helper*4) * 100, 2)
-            if sum_dro != 0:
-                sum_dro = round(sum_dro / (type_listik.count("D")*4) * 100,)
-            if sum_take != 0:
-                sum_take = round(sum_take / (type_listik.count("T")*4) * 100, 2)
-            if sum_guard != 0:
-                sum_guard = round(sum_guard / (type_listik.count("G")*4) * 100, 2)
-        
-            self.final_percentage_2.text = f"Процент: {helper}"
-            self.types_throw_2.text = f"Dro: {sum_dro} \nTake: {sum_take} \nGuard: {sum_guard}"
-        else:
-            self.final_percentage_2.text = f"Ошибка, {helper}"
-            self.types_throw_2.text = ""
-        
-        flag = True
-        end_count = 0
-        sum_dro = 0
-        sum_take = 0
-        sum_guard = 0
-        
-        helper = 0
-        
-        listik = [self.one_3.text, self.two_3.text, self.three_3.text, self.four_3.text, self.five_3.text, self.six_3.text, self.seven_3.text, self.eight_3.text, self.nine_3.text, self.one_zero_3.text,
-                  self.one_one_3.text, self.one_two_3.text, self.one_three_3.text, self.one_four_3.text, self.one_five_3.text, self.one_six_3.text, self.one_seven_3.text, self.one_eight_3.text, self.one_nine_3.text,
-                  self.two_zero_3.text, self.extra_one_3.text, self.extra_two_3.text, self.extra_three_3.text, self.extra_four_3.text, self.extra_five_3.text, self.extra_six_3.text]
-        
-        type_listik = [self.one_3_button.text, self.two_3_button.text, self.three_3_button.text, self.four_3_button.text, self.five_3_button.text, self.six_3_button.text, self.seven_3_button.text, self.eight_3_button.text, self.nine_3_button.text,
+                       self.extra_four_2_button.text, self.extra_five_2_button.text, self.extra_six_2_button.text], [self.one_3_button.text, self.two_3_button.text, self.three_3_button.text, self.four_3_button.text, self.five_3_button.text, self.six_3_button.text, self.seven_3_button.text, self.eight_3_button.text, self.nine_3_button.text,
                        self.one_zero_3_button.text, self.one_one_3_button.text, self.one_two_3_button.text, self.one_three_3_button.text, self.one_four_3_button.text, self.one_five_3_button.text, self.one_six_3_button.text, self.one_seven_3_button.text,
                        self.one_eight_3_button.text, self.one_nine_3_button.text, self.two_zero_3_button.text, self.extra_one_3_button.text, self.extra_two_3_button.text, self.extra_three_3_button.text,
-                       self.extra_four_3_button.text, self.extra_five_3_button.text, self.extra_six_3_button.text]
-        
-        end_list = [self.end_one_3, self.end_two_3, self.end_three_3, self.end_four_3, self.end_five_3, self.end_six_3, self.end_seven_3, self.end_eight_3, self.end_nine_3, self.end_ten_3, 
-                    self.extra_end_one_3, self.extra_end_two_3, self.extra_end_three_3]
-        
-        for i in range(len(listik)):
-            if listik[i] == "":
-                helper = i
-                break
-            elif len(listik[i]) > 1:
-                flag = False
-            else:
-                listik[i] = int(listik[i])
-                continue
-        else:
-            helper = len(listik)
-            
-        if len(listik) - (listik.count("") + helper) == 0 and helper != 0 and flag == True:
-            
-            if helper != len(listik):
-                end_list = end_list[:helper//2]
-            else:
-                end_list = end_list[:len(listik)//2]
-            listik = listik[:helper]
-            type_listik = type_listik[:helper]
-        
-            for i in range(len(type_listik)):
-                end_count += listik[i]
-                if i % 2 == 1:
-                    end_count = round(end_count / 8 * 100, 2)
-                    end_list[(i-1)//2].text = f"{end_count}"
-                    end_count = 0
-                    
-                if type_listik[i] == "D":
-                    sum_dro += listik[i]
-                    continue
-                if type_listik[i] == "T":
-                    sum_take += listik[i]
-                    continue
-                if type_listik[i] == "G":
-                    sum_guard += listik[i]
-                    continue
-        
-            helper = round(sum(listik) / (helper*4) * 100, 2)
-            if sum_dro != 0:
-                sum_dro = round(sum_dro / (type_listik.count("D")*4) * 100,)
-            if sum_take != 0:
-                sum_take = round(sum_take / (type_listik.count("T")*4) * 100, 2)
-            if sum_guard != 0:
-                sum_guard = round(sum_guard / (type_listik.count("G")*4) * 100, 2)
-        
-            self.final_percentage_3.text = f"Процент: {helper}"
-            self.types_throw_3.text = f"Dro: {sum_dro} \nTake: {sum_take} \nGuard: {sum_guard}"
-        else:
-            self.final_percentage_3.text = f"Ошибка, {helper}"
-            self.types_throw_3.text = ""
-            
-        flag = True
-        end_count = 0
-        sum_dro = 0
-        sum_take = 0
-        sum_guard = 0
-        
-        helper = 0
-        
-        listik = [self.one_4.text, self.two_4.text, self.three_4.text, self.four_4.text, self.five_4.text, self.six_4.text, self.seven_4.text, self.eight_4.text, self.nine_4.text, self.one_zero_4.text,
-                  self.one_one_4.text, self.one_two_4.text, self.one_three_4.text, self.one_four_4.text, self.one_five_4.text, self.one_six_4.text, self.one_seven_4.text, self.one_eight_4.text, self.one_nine_4.text,
-                  self.two_zero_4.text, self.extra_one_4.text, self.extra_two_4.text, self.extra_three_4.text, self.extra_four_4.text, self.extra_five_4.text, self.extra_six_4.text]
-        
-        type_listik = [self.one_4_button.text, self.two_4_button.text, self.three_4_button.text, self.four_4_button.text, self.five_4_button.text, self.six_4_button.text, self.seven_4_button.text, self.eight_4_button.text, self.nine_4_button.text,
+                       self.extra_four_3_button.text, self.extra_five_3_button.text, self.extra_six_3_button.text], [self.one_4_button.text, self.two_4_button.text, self.three_4_button.text, self.four_4_button.text, self.five_4_button.text, self.six_4_button.text, self.seven_4_button.text, self.eight_4_button.text, self.nine_4_button.text,
                        self.one_zero_4_button.text, self.one_one_4_button.text, self.one_two_4_button.text, self.one_three_4_button.text, self.one_four_4_button.text, self.one_five_4_button.text, self.one_six_4_button.text, self.one_seven_4_button.text,
                        self.one_eight_4_button.text, self.one_nine_4_button.text, self.two_zero_4_button.text, self.extra_one_4_button.text, self.extra_two_4_button.text, self.extra_three_4_button.text,
-                       self.extra_four_4_button.text, self.extra_five_4_button.text, self.extra_six_4_button.text]
-        
-        end_list = [self.end_one_4, self.end_two_4, self.end_three_4, self.end_four_4, self.end_five_4, self.end_six_4, self.end_seven_4, self.end_eight_4, self.end_nine_4, self.end_ten_4, 
-                    self.extra_end_one_4, self.extra_end_two_4, self.extra_end_three_4]
-        
-        for i in range(len(listik)):
-            if listik[i] == "":
-                helper = i
-                break
-            elif len(listik[i]) > 1:
-                flag = False
-            else:
-                listik[i] = int(listik[i])
-                continue
-        else:
-            helper = len(listik)
-            
-        if len(listik) - (listik.count("") + helper) == 0 and helper != 0 and flag == True:
-            
-            if helper != len(listik):
-                end_list = end_list[:helper//2]
-            else:
-                end_list = end_list[:len(listik)//2]
-            listik = listik[:helper]
-            type_listik = type_listik[:helper]
-        
-            for i in range(len(type_listik)):
-                end_count += listik[i]
-                if i % 2 == 1:
-                    end_count = round(end_count / 8 * 100, 2)
-                    end_list[(i-1)//2].text = f"{end_count}"
-                    end_count = 0
-                    
-                if type_listik[i] == "D":
-                    sum_dro += listik[i]
-                    continue
-                if type_listik[i] == "T":
-                    sum_take += listik[i]
-                    continue
-                if type_listik[i] == "G":
-                    sum_guard += listik[i]
-                    continue
-        
-            helper = round(sum(listik) / (helper*4) * 100, 2)
-            if sum_dro != 0:
-                sum_dro = round(sum_dro / (type_listik.count("D")*4) * 100,)
-            if sum_take != 0:
-                sum_take = round(sum_take / (type_listik.count("T")*4) * 100, 2)
-            if sum_guard != 0:
-                sum_guard = round(sum_guard / (type_listik.count("G")*4) * 100, 2)
-        
-            self.final_percentage_4.text = f"Процент: {helper}"
-            self.types_throw_4.text = f"Dro: {sum_dro} \nTake: {sum_take} \nGuard: {sum_guard}"
-        else:
-            self.final_percentage_4.text = f"Ошибка, {helper}"
-            self.types_throw_4.text = ""
-            
-        flag = True
-        end_count = 0
-        sum_dro = 0
-        sum_take = 0
-        sum_guard = 0
-        
-        helper = 0
-        
-        listik = [self.one_5.text, self.two_5.text, self.three_5.text, self.four_5.text, self.five_5.text, self.six_5.text, self.seven_5.text, self.eight_5.text, self.nine_5.text, self.one_zero_5.text,
-                  self.one_one_5.text, self.one_two_5.text, self.one_three_5.text, self.one_four_5.text, self.one_five_5.text, self.one_six_5.text, self.one_seven_5.text, self.one_eight_5.text, self.one_nine_5.text,
-                  self.two_zero_5.text, self.extra_one_5.text, self.extra_two_5.text, self.extra_three_5.text, self.extra_four_5.text, self.extra_five_5.text, self.extra_six_5.text]
-        
-        type_listik = [self.one_5_button.text, self.two_5_button.text, self.three_5_button.text, self.four_5_button.text, self.five_5_button.text, self.six_5_button.text, self.seven_5_button.text, self.eight_5_button.text, self.nine_5_button.text,
+                       self.extra_four_4_button.text, self.extra_five_4_button.text, self.extra_six_4_button.text], [self.one_5_button.text, self.two_5_button.text, self.three_5_button.text, self.four_5_button.text, self.five_5_button.text, self.six_5_button.text, self.seven_5_button.text, self.eight_5_button.text, self.nine_5_button.text,
                        self.one_zero_5_button.text, self.one_one_5_button.text, self.one_two_5_button.text, self.one_three_5_button.text, self.one_four_5_button.text, self.one_five_5_button.text, self.one_six_5_button.text, self.one_seven_5_button.text,
                        self.one_eight_5_button.text, self.one_nine_5_button.text, self.two_zero_5_button.text, self.extra_one_5_button.text, self.extra_two_5_button.text, self.extra_three_5_button.text,
-                       self.extra_four_5_button.text, self.extra_five_5_button.text, self.extra_six_5_button.text]
+                       self.extra_four_5_button.text, self.extra_five_5_button.text, self.extra_six_5_button.text]]
         
-        end_list = [self.end_one_5, self.end_two_5, self.end_three_5, self.end_four_5, self.end_five_5, self.end_six_5, self.end_seven_5, self.end_eight_5, self.end_nine_5, self.end_ten_5, 
-                    self.extra_end_one_5, self.extra_end_two_5, self.extra_end_three_5]
+        end_list = [[self.end_one_1, self.end_two_1, self.end_three_1, self.end_four_1, self.end_five_1, self.end_six_1, self.end_seven_1, self.end_eight_1, self.end_nine_1, self.end_ten_1, 
+                    self.extra_end_one_1, self.extra_end_two_1, self.extra_end_three_1], [self.end_one_2, self.end_two_2, self.end_three_2, self.end_four_2, self.end_five_2, self.end_six_2, self.end_seven_2, self.end_eight_2, self.end_nine_2, self.end_ten_2, 
+                    self.extra_end_one_2, self.extra_end_two_2, self.extra_end_three_2], [self.end_one_3, self.end_two_3, self.end_three_3, self.end_four_3, self.end_five_3, self.end_six_3, self.end_seven_3, self.end_eight_3, self.end_nine_3, self.end_ten_3, 
+                    self.extra_end_one_3, self.extra_end_two_3, self.extra_end_three_3], [self.end_one_4, self.end_two_4, self.end_three_4, self.end_four_4, self.end_five_4, self.end_six_4, self.end_seven_4, self.end_eight_4, self.end_nine_4, self.end_ten_4, 
+                    self.extra_end_one_4, self.extra_end_two_4, self.extra_end_three_4], [self.end_one_5, self.end_two_5, self.end_three_5, self.end_four_5, self.end_five_5, self.end_six_5, self.end_seven_5, self.end_eight_5, self.end_nine_5, self.end_ten_5, 
+                    self.extra_end_one_5, self.extra_end_two_5, self.extra_end_three_5]]
+        
+        final_percentage_list = [self.final_percentage_1, self.final_percentage_2, self.final_percentage_3, self.final_percentage_4, self.final_percentage_5]
+        
+        types_throw_list = [self.types_throw_1, self.types_throw_2, self.types_throw_3, self.types_throw_4, self.types_throw_5]
         
         for i in range(len(listik)):
-            if listik[i] == "":
-                helper = i
-                break
-            elif len(listik[i]) > 1:
-                flag = False
-            else:
-                listik[i] = int(listik[i])
-                continue
-        else:
-            helper = len(listik)
+            name = name_list[i].text
+            cursor.execute("""
+                SELECT 1 FROM players WHERE first_and_second_name = ?
+            """, (name,))
             
-        if len(listik) - (listik.count("") + helper) == 0 and helper != 0 and flag == True:
+            result = cursor.fetchone()
             
-            if helper != len(listik):
-                end_list = end_list[:helper//2]
-            else:
-                end_list = end_list[:len(listik)//2]
-            listik = listik[:helper]
-            type_listik = type_listik[:helper]
-        
-            for i in range(len(type_listik)):
-                end_count += listik[i]
-                if i % 2 == 1:
-                    end_count = round(end_count / 8 * 100, 2)
-                    end_list[(i-1)//2].text = f"{end_count}"
-                    end_count = 0
+            if result:
+                for j in range(len(listik[i])):
+                    if listik[i][j] == "":
+                        helper = j
+                        break
+                    elif len(listik[i][j]) > 1:
+                        flag = False
+                    else:
+                        listik[i][j] = int(listik[i][j])
+                        continue
+                else:
+                    helper = len(listik[i])
+                
+                if len(listik[i]) - (listik[i].count("") + helper) == 0 and helper != 0 and flag == True:
+                
+                    if helper != len(listik[i]):
+                        end_list[i] = end_list[i][:helper//2]
+                    else:
+                        end_list[i] = end_list[i][:helper-1//2]
+                    listik[i] = listik[i][:helper]
+                    type_listik[i] = type_listik[i][:helper]
+            
+                    for k in range(len(type_listik[i])):
+                        end_count += listik[i][k]
+                        if k % 2 == 1:
+                            end_count = round(end_count / 8 * 100, 2)
+                            end_list[i][(k-1)//2].text = f"{end_count}"
+                            end_count = 0
                     
-                if type_listik[i] == "D":
-                    sum_dro += listik[i]
-                    continue
-                if type_listik[i] == "T":
-                    sum_take += listik[i]
-                    continue
-                if type_listik[i] == "G":
-                    sum_guard += listik[i]
-                    continue
+                        if type_listik[i][k] == "D":
+                            sum_dro += listik[i][k]
+                            continue
+                        if type_listik[i][k] == "T":
+                            sum_take += listik[i][k]
+                            continue
+                        if type_listik[i][k] == "G":
+                            sum_guard += listik[i][k]
+                            continue
+            
+                    helper = round(sum(listik[i]) / (helper*4) * 100, 2)
+                    if sum_dro != 0:
+                        sum_dro = round(sum_dro / (type_listik[i].count("D")*4) * 100,)
+                    if sum_take != 0:
+                        sum_take = round(sum_take / (type_listik[i].count("T")*4) * 100, 2)
+                    if sum_guard != 0:
+                        sum_guard = round(sum_guard / (type_listik[i].count("G")*4) * 100, 2)
+            
+                    final_percentage_list[i].text = f"Процент: {helper}"
+                    types_throw_list[i].text = f"Dro: {sum_dro} \nTake: {sum_take} \nGuard: {sum_guard}"
+                else:
+                    final_percentage_list[i].text = f"Ошибка, {helper}"
+                    types_throw_list[i].text = ""
+                
+                flag = True
+                sum_dro = 0
+                sum_take = 0
+                sum_guard = 0
+            
+                helper = 0
+            else:
+                final_percentage_list[i].text = "Ошибка игрока"
+                types_throw_list[i].text = ""
         
-            helper = round(sum(listik) / (helper*4) * 100, 2)
-            if sum_dro != 0:
-                sum_dro = round(sum_dro / (type_listik.count("D")*4) * 100,)
-            if sum_take != 0:
-                sum_take = round(sum_take / (type_listik.count("T")*4) * 100, 2)
-            if sum_guard != 0:
-                sum_guard = round(sum_guard / (type_listik.count("G")*4) * 100, 2)
-        
-            self.final_percentage_5.text = f"Процент: {helper}"
-            self.types_throw_5.text = f"Dro: {sum_dro} \nTake: {sum_take} \nGuard: {sum_guard}"
-        else:
-            self.final_percentage_5.text = f"Ошибка, {helper}"
-            self.types_throw_5.text = ""
+        conn.close
