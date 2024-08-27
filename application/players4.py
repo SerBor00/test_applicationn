@@ -7,6 +7,7 @@ from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.uix.scrollview import ScrollView
 from database import path_db, inp_filter
+import sqlite3
 
 class players4(Screen):
     def __init__(self, **kwargs):

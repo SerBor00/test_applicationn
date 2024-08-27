@@ -6,73 +6,112 @@ cursor = conn.cursor()
 
 cursor.execute("""
     CREATE TABLE IF NOT EXISTS players (
-        first_and_second_name VARCHAR(100) NOT NULL PRIMARY KEY,
-        date_of_born DATE NOT NULL,
-        gender VARCHAR(9) NOT NULL
+    player_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_and_second_name TEXT NOT NULL,
+    date_of_born DATE NOT NULL,
+    gender TEXT NOT NULL
     )
 """)
 
 cursor.execute("""
-    CREATE TABLE IF NOT EXISTS match_players_info (
-        name_of_team VARCHAR(50) NOT NULL,
-        name_of_game VARCHAR(200) NOT NULL,
-        date_of_game DATE NOT NULL,
-        first_and_second_name_1 VARCHAR(100) NOT NULL,
-        first_and_second_name_2 VARCHAR(100) NOT NULL,
-        first_and_second_name_3 VARCHAR(100),
-        first_and_second_name_4 VARCHAR(100),
-        first_and_second_name_5 VARCHAR(100)
+    CREATE TABLE IF NOT EXISTS matches (
+    match_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name_of_game TEXT NOT NULL,
+    date_of_game DATE NOT NULL,
+    name_of_team TEXT NOT NULL
     )
+""")
+
+cursor.execute("""
+    CREATE TABLE IF NOT EXISTS match_players (
+    match_id INTEGER,
+    player_id INTEGER,
+    PRIMARY KEY (match_id, player_id),
+    FOREIGN KEY (match_id) REFERENCES matches(match_id),
+    FOREIGN KEY (player_id) REFERENCES players(player_id)
+    )         
 """)
 
 cursor.execute("""
     CREATE TABLE IF NOT EXISTS points (
-        one INT,
-        two INT,
-        three INT,
-        four INT,
-        five INT,
-        six INT,
-        seven INT,
-        eight INT,
-        nine INT,
-        one_zero INT,
-        one_one INT,
-        one_two INT,
-        one_three INT,
-        one_four INT,
-        one_five INT,
-        one_six INT,
-        one_seven INT,
-        one_eight INT,
-        one_nine INT,
-        two_zero INT,
-        two_one INT,
-        two_two INT,
-        two_three INT,
-        two_four INT,
-        two_five INT,
-        two_six INT,
-        two_seven INT,
-        two_eight INT,
-        two_nine INT,
-        three_zero INT,
-        extra_one INT,
-        extra_two INT,
-        extra_three INT,
-        extra_four INT,
-        extra_five INT,
-        extra_six INT,
-        extra_seven INT,
-        extra_eight INT,
-        extra_nine INT,
-        points INT,
-        final_percentage FLOAT
-
-    )
+    points_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    match_id INTEGER,
+    one INTEGER,
+    two INTEGER,
+    three INTEGER,
+    four INTEGER,
+    five INTEGER,
+    six INTEGER,
+    seven INTEGER,
+    eight INTEGER,
+    nine INTEGER,
+    ten INTEGER,
+    eleven INTEGER,
+    twelve INTEGER,
+    thirteen INTEGER,
+    fourteen INTEGER,
+    fifteen INTEGER,
+    sixteen INTEGER,
+    seventeen INTEGER,
+    eighteen INTEGER,
+    nineteen INTEGER,
+    twenty INTEGER,
+    twenty_one INTEGER,
+    twenty_two INTEGER,
+    twenty_three INTEGER,
+    twenty_four INTEGER,
+    twenty_five INTEGER,
+    twenty_six INTEGER,
+    twenty_seven INTEGER,
+    twenty_eight INTEGER,
+    twenty_nine INTEGER,
+    thirty INTEGER,
+    extra_one INTEGER,
+    extra_two INTEGER,
+    extra_three INTEGER,
+    extra_four INTEGER,
+    extra_five INTEGER,
+    extra_six INTEGER,
+    extra_seven INTEGER,
+    extra_eight INTEGER,
+    extra_nine INTEGER,
+    FOREIGN KEY (match_id) REFERENCES matches(match_id)
+    )       
 """)
 
+cursor.execute("""
+    CREATE TABLE IF NOT EXISTS match_stats (
+    match_id INTEGER,
+    points_id INTEGER,
+    PRIMARY KEY (match_id, points_id),
+    FOREIGN KEY (match_id) REFERENCES matches(match_id),
+    FOREIGN KEY (points_id) REFERENCES points(points_id)
+    )         
+""")
 
+cursor.execute("""
+    CREATE TABLE IF NOT EXISTS match_persteges_info (
+    points_id INTEGER,
+    guard_persent REAL,
+    dro_persent REAL,
+    take_persent REAL,
+    final_persent REAL,
+    end_1_persent REAL,
+    end_2_persent REAL,
+    end_3_persent REAL,
+    end_4_persent REAL,
+    end_5_persent REAL,
+    end_6_persent REAL,
+    end_7_persent REAL,
+    end_8_persent REAL,
+    end_9_persent REAL,
+    end_10_persent REAL,
+    ex_1_end_persent REAL,
+    ex_2_end_persent REAL,
+    ex_3_end_persent REAL,
+    FOREIGN KEY (points_id) REFERENCES points(points_id)
+    )        
+""")
 
 def path_db ():
     current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -80,9 +119,7 @@ def path_db ():
     return db_path
 
 def inp_filter(text, *args):
-    max_length = 3
-    
-    if len(text) <= max_length and text in "01234":
+    if text in "01234":
         return text
     else:
         return ''

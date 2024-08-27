@@ -505,8 +505,6 @@ class players2(Screen):
         self.extra_nine_2_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.extra_nine_2_button)
         
-        fl2.add_widget(Button(text="test"))
-        
         self.final_percentage_1 = Label(text="", pos=(20, 40))
         self.types_throw_1 = Label(text="", pos=(20, -20))
         self.final_percentage_2 = Label(text="", pos=(120, 40))
