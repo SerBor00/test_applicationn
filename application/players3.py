@@ -600,12 +600,14 @@ class players3(Screen):
         self.extra_end_three_3 = Label(text="%")
         gl2.add_widget(self.extra_end_three_3)
         
-        self.final_percentage_1 = Label(text="", pos=(20, 40))
-        self.types_throw_1 = Label(text="", pos=(20, -20))
-        self.final_percentage_2 = Label(text="", pos=(120, 40))
-        self.types_throw_2 = Label(text="", pos=(120, -20))
-        self.final_percentage_3 = Label(text="", pos=(220, 40))
-        self.types_throw_3 = Label(text="", pos=(220, -20))
+        self.final_percentage_1 = Label(text="", pos=(-40, 80))
+        self.types_throw_1 = Label(text="", pos=(-40, 20))
+        self.final_percentage_2 = Label(text="", pos=(120, 80))
+        self.types_throw_2 = Label(text="", pos=(120, 20))
+        self.final_percentage_3 = Label(text="", pos=(280, 80))
+        self.types_throw_3 = Label(text="", pos=(280, 20))
+        
+        self.save_info = Label(text="", pos=(120, -60))
         
         fl2.add_widget(self.final_percentage_1)
         fl2.add_widget(self.types_throw_1)
@@ -613,6 +615,8 @@ class players3(Screen):
         fl2.add_widget(self.types_throw_2)
         fl2.add_widget(self.final_percentage_3)
         fl2.add_widget(self.types_throw_3)
+        
+        fl2.add_widget(self.save_info)
         
         end = Button(text= "Рассчёт", pos=(0, 140))
         end.bind(on_release=self.math_operation)
@@ -645,10 +649,10 @@ class players3(Screen):
 
     def math_operation(self, *args):
         
-        name_list = [self.name_1, self.name_2, self.name_3]
+        self.name_list = [self.name_1, self.name_2, self.name_3]
         
-        conn = sqlite3.connect(path_db())
-        cursor = conn.cursor()
+        self.conn = sqlite3.connect(path_db())
+        cursor = self.conn.cursor()
         
         flag = True
         end_count = 0
@@ -658,8 +662,9 @@ class players3(Screen):
         
         helper = 0
         
+        self.persentages_stat = [[], [], []]
         
-        listik = [[self.one_1.text, self.two_1.text, self.three_1.text, self.four_1.text, self.five_1.text, self.six_1.text, self.seven_1.text, self.eight_1.text, self.nine_1.text, self.one_zero_1.text,
+        self.listik = [[self.one_1.text, self.two_1.text, self.three_1.text, self.four_1.text, self.five_1.text, self.six_1.text, self.seven_1.text, self.eight_1.text, self.nine_1.text, self.one_zero_1.text,
                   self.one_one_1.text, self.one_two_1.text, self.one_three_1.text, self.one_four_1.text, self.one_five_1.text, self.one_six_1.text, self.one_seven_1.text, self.one_eight_1.text, self.one_nine_1.text,
                   self.two_zero_1.text, self.extra_one_1.text, self.extra_two_1.text, self.extra_three_1.text, self.extra_four_1.text, self.extra_five_1.text, self.extra_six_1.text], [self.one_2.text, self.two_2.text, self.three_2.text, self.four_2.text, self.five_2.text, self.six_2.text, self.seven_2.text, self.eight_2.text, self.nine_2.text, self.one_zero_2.text,
                   self.one_one_2.text, self.one_two_2.text, self.one_three_2.text, self.one_four_2.text, self.one_five_2.text, self.one_six_2.text, self.one_seven_2.text, self.one_eight_2.text, self.one_nine_2.text,
@@ -687,8 +692,8 @@ class players3(Screen):
         
         types_throw_list = [self.types_throw_1, self.types_throw_2, self.types_throw_3]
         
-        for i in range(len(listik)):
-            name = name_list[i].text
+        for i in range(len(self.listik)):
+            name = self.name_list[i].text.lower()
             cursor.execute("""
                 SELECT 1 FROM players WHERE first_and_second_name = ?
             """, (name,))
@@ -696,51 +701,62 @@ class players3(Screen):
             result = cursor.fetchone()
             
             if result:
-                for j in range(len(listik[i])):
-                    if listik[i][j] == "":
+                for j in range(len(self.listik[i])):
+                    if self.listik[i][j] == "":
                         helper = j
                         break
-                    elif len(listik[i][j]) > 1:
+                    elif len(self.listik[i][j]) > 1:
                         flag = False
+                        break
                     else:
-                        listik[i][j] = int(listik[i][j])
+                        self.listik[i][j] = int(self.listik[i][j])
                         continue
                 else:
-                    helper = len(listik[i])
+                    helper = len(self.listik[i])
                 
-                if len(listik[i]) - (listik[i].count("") + helper) == 0 and helper != 0 and flag == True:
+                if len(self.listik[i]) - (self.listik[i].count("") + helper) == 0 and helper != 0 and flag == True:
                 
-                    if helper != len(listik[i]):
+                    if helper != len(self.listik[i]):
                         end_list[i] = end_list[i][:helper//2]
                     else:
                         end_list[i] = end_list[i][:helper-1//2]
-                    listik[i] = listik[i][:helper]
+                    self.listik[i] = self.listik[i][:helper]
                     type_listik[i] = type_listik[i][:helper]
             
                     for k in range(len(type_listik[i])):
-                        end_count += listik[i][k]
+                        end_count += self.listik[i][k]
                         if k % 2 == 1:
                             end_count = round(end_count / 8 * 100, 2)
+                            self.persentages_stat[i].append(end_count)
                             end_list[i][(k-1)//2].text = f"{end_count}"
                             end_count = 0
                     
                         if type_listik[i][k] == "D":
-                            sum_dro += listik[i][k]
+                            sum_dro += self.listik[i][k]
                             continue
                         if type_listik[i][k] == "T":
-                            sum_take += listik[i][k]
+                            sum_take += self.listik[i][k]
                             continue
                         if type_listik[i][k] == "G":
-                            sum_guard += listik[i][k]
+                            sum_guard += self.listik[i][k]
                             continue
             
-                    helper = round(sum(listik[i]) / (helper*4) * 100, 2)
+                    helper = round(sum(self.listik[i]) / (helper*4) * 100, 2)
                     if sum_dro != 0:
                         sum_dro = round(sum_dro / (type_listik[i].count("D")*4) * 100,)
+                        self.persentages_stat[i].append(sum_dro)
+                    else:
+                        self.persentages_stat[i].append(0.0)
                     if sum_take != 0:
                         sum_take = round(sum_take / (type_listik[i].count("T")*4) * 100, 2)
+                        self.persentages_stat[i].append(sum_take)
+                    else:
+                        self.persentages_stat[i].append(0.0)
                     if sum_guard != 0:
                         sum_guard = round(sum_guard / (type_listik[i].count("G")*4) * 100, 2)
+                        self.persentages_stat[i].append(sum_guard)
+                    else:
+                        self.persentages_stat[i].append(0.0)
             
                     final_percentage_list[i].text = f"Процент: {helper}"
                     types_throw_list[i].text = f"Dro: {sum_dro} \nTake: {sum_take} \nGuard: {sum_guard}"
@@ -757,11 +773,43 @@ class players3(Screen):
             else:
                 final_percentage_list[i].text = "Ошибка игрока"
                 types_throw_list[i].text = ""
-        
-        conn.close()
                 
     def save_match(self, *args):
-        pass
+        if "Ошибка" in self.final_percentage_1.text or "Ошибка" in self.final_percentage_2.text or "Ошибка" in self.final_percentage_3.text or self.final_percentage_1 == "":
+            self.save_info.text = "Ошибка сохранения"
+        else:
+            
+            name_match = self.name_match.text
+            date_game = self.date_match.text
+            name_team = self.name_team.text
+            
+            cursor = self.conn.cursor()
+            
+            cursor.execute("""
+                INSERT INTO matches (name_of_game, date_of_game, name_of_team) VALUES (?, ?, ?)
+            """, (name_match, date_game, name_team))
+            
+            cursor.execute("""
+                SELECT LAST_INSERT_ROWID()       
+            """)
+            
+            match_id = cursor.lastrowid
+            
+            for i in range(3):
+                name = self.name_list[i].text
+                cursor.execute("""
+                    SELECT player_id FROM players WHERE first_and_second_name = ?
+                """, (name,))
+                player_id = cursor.fetchone()
+                
+                cursor.execute("""
+                    INSERT INTO match_players (match_id, player_id) VALUES (?, ?) 
+                """, (match_id, player_id))                
+            
+            
+            self.conn.commit()
+            self.conn.close()
+            self.save_info.text = f"Успешно сохранено \n {self.listik[0]} \n {self.listik[1]} \n {self.listik[2]}"
                 
     def switch_match_plus(self, *args):
         self.manager.current = "Игра+"

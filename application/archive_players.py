@@ -18,7 +18,9 @@ class archive_players(Screen):
         
         conn.close()
         
-        bl.add_widget(Label(text=f"Игроки: {players}"))
+        
+        for i in players:
+            bl.add_widget(Label(text=f"Игроки: {i[0], i[1].title(), i[2], i[3]}"))
         
         archive = Button(text="Назад")
         archive.bind(on_release=self.switch_archive)

@@ -966,9 +966,13 @@ class players5(Screen):
         fl2.add_widget(self.final_percentage_5)
         fl2.add_widget(self.types_throw_5)
         
-        end = Button(text= "Рассчёт", pos=(0, 90))
+        end = Button(text= "Рассчёт", pos=(0, 140))
         end.bind(on_release=self.math_operation)
         fl2.add_widget(end)
+        
+        save = Button(text= "Сохранить", pos=(0, 70))
+        save.bind(on_release=self.save_match)
+        fl2.add_widget(save)
         
         match_plus = Button(text= "Назад")
         match_plus.bind(on_release=self.switch_match_plus)
@@ -1050,7 +1054,7 @@ class players5(Screen):
         types_throw_list = [self.types_throw_1, self.types_throw_2, self.types_throw_3, self.types_throw_4, self.types_throw_5]
         
         for i in range(len(listik)):
-            name = name_list[i].text
+            name = name_list[i].text.lower()
             cursor.execute("""
                 SELECT 1 FROM players WHERE first_and_second_name = ?
             """, (name,))
@@ -1064,6 +1068,7 @@ class players5(Screen):
                         break
                     elif len(listik[i][j]) > 1:
                         flag = False
+                        break
                     else:
                         listik[i][j] = int(listik[i][j])
                         continue
@@ -1121,3 +1126,9 @@ class players5(Screen):
                 types_throw_list[i].text = ""
         
         conn.close
+        
+    def save_match(self, *args):
+        pass
+        
+    def switch_match_plus(self, *args):
+        self.manager.current = "Игра+"
