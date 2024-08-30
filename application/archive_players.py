@@ -1,6 +1,7 @@
 from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import Screen
+from kivy.uix.textinput import TextInput
 from kivy.uix.label import Label
 from database import path_db
 import sqlite3
@@ -10,17 +11,19 @@ class archive_players(Screen):
         super().__init__(**kwargs)
         bl = BoxLayout()
         
-        conn = sqlite3.connect(path_db())
-        cursor = conn.cursor()
+        self.search = TextInput(hint_text = "Имя и Фамилия игрока")
+        bl.add_widget(self.search)
         
-        cursor.execute("SELECT * FROM players")
-        players = cursor.fetchall()
+        self.conn = sqlite3.connect(path_db())
+        self.cursor = self.conn.cursor()
         
-        conn.close()
+        self.cursor.execute("SELECT * FROM players")
+        self.players = self.cursor.fetchall()
         
         
-        for i in players:
-            bl.add_widget(Label(text=f"Игроки: {i[0], i[1].title(), i[2], i[3]}"))
+        
+        for i in self.players:
+            bl.add_widget(Label(text=f"Игроки: {i}"))
         
         archive = Button(text="Назад")
         archive.bind(on_release=self.switch_archive)
@@ -28,6 +31,14 @@ class archive_players(Screen):
         
         self.add_widget(bl)
         
+    def on_search (self, *args):
+        search = self.search.text.title()
+        self.cursor.execute("""
+            SELECT * FROM players WHERE first_and_second_name = ?    
+        """, (search,))
+        self.players = self.cursor.fetchone()
+        
         
     def switch_archive(self, *args):
+        self.conn.close()
         self.manager.current = "Архив"

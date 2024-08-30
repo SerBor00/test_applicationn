@@ -42,9 +42,9 @@ class player_plus(Screen):
         self.manager.current = "Главная"
         
     def checkpoint_info(self, *args):
-        name = self.namer.text.lower()
-        date = self.date.text.lower()
-        gender = self.gender.text.lower()
+        name = self.namer.text.title()
+        date = self.date.text
+        gender = self.gender.text.title()
         
         
         conn = sqlite3.connect(path_db())

@@ -649,10 +649,15 @@ class players2(Screen):
         grid_per.add_widget(self.final_percentage_2)
         grid_per.add_widget(self.types_throw_1)
         grid_per.add_widget(self.types_throw_2)
+        
 
         end = Button(text= "Рассчёт", pos=(0, 75))
         end.bind(on_release=self.math_operation)
         fl2.add_widget(end)
+
+        save = Button(text= "Сохранить", pos=(0, 70))
+        save.bind(on_release=self.save_match)
+        fl2.add_widget(save)
 
         match_plus = Button(text= "Назад")
         match_plus.bind(on_release=self.switch_match_plus)
@@ -679,9 +684,6 @@ class players2(Screen):
         type_throw =(type_throw +1) % len(new_type_throw)
         instance.text = new_type_throw[type_throw]
         return instance.text
-    
-    def switch_match_plus(self, *args):
-        self.manager.current = "Игра+"
 
     def math_operation(self, *args):
         
@@ -805,3 +807,9 @@ class players2(Screen):
         else:
             self.final_percentage_2.text = f"Ошибка, {helper}"
             self.types_throw_2.text = ""
+            
+    def save_match(self, instance, *args):
+        pass
+            
+    def switch_match_plus(self, *args):
+        self.manager.current = "Игра+"
