@@ -23,9 +23,9 @@ class archive_players(Screen):
         
         
         for i in self.players:
-            bl.add_widget(Label(text=f"Игроки: {i}"))
+            bl.add_widget(Label(text=f"Игроки: {i}" , color = "#02034e", size_hint_y=None, height= 64 , font_size =24 , size_hint=(None, None) , size = (230 , 64)))
         
-        archive = Button(text="Назад")
+        archive = Button(text="Назад", size_hint=(None, None) , size = (270 , 60))
         archive.bind(on_release=self.switch_archive)
         bl.add_widget(archive)
         

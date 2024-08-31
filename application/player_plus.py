@@ -9,34 +9,37 @@ import sqlite3
 class player_plus(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        bl = BoxLayout()
+        main_bl = BoxLayout(size_hint=(1, None), height=900)
+        bl2 = BoxLayout(size_hint=(1, None), height=700, padding= (100 , 1 , 1 , 1), spacing= 20 )        
+        bl = BoxLayout(size_hint=(1, None), height=200 , padding= (100 , 1 , 1 , 1))
                 
-        bl = BoxLayout(spacing= 20 , padding= 5)
-                
-        high_text = Label(text= "Регистрация" , color = "#02034e", size_hint_y=None, height= 32 , font_size =32)
-        bl.add_widget(high_text)
+        high_text = Label(text= "РЕГИСТРАЦИЯ" , color = "#02034e", size_hint_y=None, height= 32 , font_size =32, size_hint=(None, None) , size = (300 , 32))
+        bl2.add_widget(high_text)
         
-        bl.add_widget(Label(text="Имя и Фамилия" , color = "#02034e", size_hint_y=None, height= 32 , font_size =26))        
-        self.namer = TextInput(hint_text= "Вася Пупкин", multiline=False, size_hint_y=None, height= 32 )
-        bl.add_widget(self.namer)
+        bl2.add_widget(Label(text="имя и фамилия" , color = "#02034e", size_hint_y=None, height= 32 , font_size =26, size_hint=(None, None) , size = (300 , 32)))        
+        self.namer = TextInput(hint_text= "Вася Пупкин", multiline=False, size_hint_y=None, height= 32, size_hint=(None, None) , size = (300 , 32), padding= (1 , 1 , 1 , 1 ), font_size =25)
+        bl2.add_widget(self.namer)
         
-        bl.add_widget(Label(text= "Дата рождения" , color = "#02034e", size_hint_y=None, height= 32 , font_size =26))
-        self.date = TextInput(hint_text= "дд.мм.гггг", multiline=False, size_hint_y=None, height= 32)
-        bl.add_widget(self.date)
+        bl2.add_widget(Label(text= "дата рождения" , color = "#02034e", size_hint_y=None, height= 32 , font_size =26, size_hint=(None, None) , size = (300 , 32)))
+        self.date = TextInput(hint_text= "дд.мм.гггг", multiline=False, size_hint_y=None, height= 32, size_hint=(None, None) , size = (300 , 32), padding= (92 , 1 , 1 , 1), font_size =25)
+        bl2.add_widget(self.date)
         
-        bl.add_widget(Label(text= "Пол" , color = "#02034e", size_hint_y=None, height= 32 , font_size =26))
-        self.gender = TextInput(hint_text= "Муж / Жен", multiline=False, size_hint_y=None, height= 32)
-        bl.add_widget(self.gender)
+        bl2.add_widget(Label(text= "пол" , color = "#02034e", size_hint_y=None, height= 32 , font_size =26, size_hint=(None, None) , size = (300 , 32)))
+        self.gender = TextInput(hint_text= "муж / жен", multiline=False, size_hint_y=None, height= 32, size_hint=(None, None) , size = (300 , 32), padding= (88 , 1 , 1 , 1), font_size =25)
+        bl2.add_widget(self.gender)
         
-        checkpoint = Button(text= "Сохранить")
+        checkpoint = Button(text= "сохранить" , size_hint=(None, None) , size = (300 , 60))
         checkpoint.bind(on_release=self.checkpoint_info)
         bl.add_widget(checkpoint)
         
-        fst_page = Button(text="Назад")
+        fst_page = Button(text="назад" , size_hint=(None, None) , size = (300 , 60))
         fst_page.bind(on_release=self.switch_fst_page)
         bl.add_widget(fst_page)
         
-        self.add_widget(bl)
+        main_bl.add_widget(bl2)
+        main_bl.add_widget(bl)
+        
+        self.add_widget(main_bl)
     
     def switch_fst_page(self, *args):
         self.manager.current = "Главная"

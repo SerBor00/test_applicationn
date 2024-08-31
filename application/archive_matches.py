@@ -24,7 +24,7 @@ class archive_matches(Screen):
             bl.add_widget(Label(text= f"Проценты: {i}"))
             
         
-        archive = Button(text="Назад")
+        archive = Button(text="Назад", size_hint=(None, None) , size = (270 , 60))
         archive.bind(on_release=self.switch_archive)
         bl.add_widget(archive)
         self.add_widget(bl)

@@ -6,9 +6,9 @@ class fst_page(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         bl = BoxLayout()
-        match_p = Button(text="Игра+")
-        player_p = Button(text="Игрок+")
-        archive = Button(text="Архив")
+        match_p = Button(text="Игра+", size_hint=(None, None) , size = (270 , 60))
+        player_p = Button(text="Игрок+", size_hint=(None, None) , size = (270 , 60))
+        archive = Button(text="Архив", size_hint=(None, None) , size = (270 , 60))
         match_p.bind(on_release=self.switch_match_p)
         player_p.bind(on_release=self.switch_player_p)
         archive.bind(on_release=self.switch_archive)

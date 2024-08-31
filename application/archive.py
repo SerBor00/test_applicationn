@@ -7,15 +7,15 @@ class archive(Screen):
         super().__init__(**kwargs)
         bl = BoxLayout()
         
-        archive_players = Button(text= "Игроки")
+        archive_players = Button(text= "Игроки", size_hint=(None, None) , size = (270 , 60))
         archive_players.bind(on_press= self.switch_archive_players)
         bl.add_widget(archive_players)
         
-        archive_matches = Button(text= "Матчи")
+        archive_matches = Button(text= "Матчи", size_hint=(None, None) , size = (270 , 60))
         archive_matches.bind(on_press= self.switch_archive_matches)
         bl.add_widget(archive_matches)
         
-        fst_page = Button(text="Назад")
+        fst_page = Button(text="Назад", size_hint=(None, None) , size = (270 , 60))
         fst_page.bind(on_release=self.switch_fst_page)
         bl.add_widget(fst_page)
         

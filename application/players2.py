@@ -1,7 +1,6 @@
 from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.screenmanager import Screen
 from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
@@ -77,15 +76,13 @@ class players2(Screen):
         self.three_1_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.three_1_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.three_1_button)
-        self.end_first_1_2 = Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18)
-        gl2.add_widget(self.end_first_1_2)
+        gl2.add_widget(Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18))
         self.three_2 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
         gl2.add_widget(self.three_2)
         self.three_2_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.three_2_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.three_2_button)
-        self.end_second_1_2 = Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18)
-        gl2.add_widget(self.end_second_1_2)
+        gl2.add_widget(Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18))
        
         
         gl2.add_widget(Label(text="4" , color = "#02034e", size_hint=(None, None) , size = (68 , 50) , font_size =18 ))
@@ -124,15 +121,13 @@ class players2(Screen):
         self.six_1_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.six_1_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.six_1_button)
-        self.end_first_2_2 = Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18)
-        gl2.add_widget(self.end_first_2_2)
+        gl2.add_widget(Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18))
         self.six_2 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
         gl2.add_widget(self.six_2)
         self.six_2_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.six_2_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.six_2_button)
-        self.end_second_2_2 = Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18)
-        gl2.add_widget(self.end_second_2_2)
+        gl2.add_widget(Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18))
         
         gl2.add_widget(Label(text="7" , color = "#02034e", size_hint=(None, None) , size = (68 , 50) , font_size =18 ))
         self.seven_1 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
@@ -161,8 +156,8 @@ class players2(Screen):
         self.eight_2_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.eight_2_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.eight_2_button)
-        self.end_second_4 = Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18)
-        gl2.add_widget(self.end_second_4)
+        self.end_second_3_1 = Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18)
+        gl2.add_widget(self.end_second_3_1)
         
         gl2.add_widget(Label(text="9" , color = "#02034e", size_hint=(None, None) , size = (68 , 50) , font_size =18 ))
         self.nine_1 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
@@ -170,15 +165,13 @@ class players2(Screen):
         self.nine_1_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.nine_1_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.nine_1_button)
-        self.end_first_3_2 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_first_3_2)
+        gl2.add_widget(Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18))
         self.nine_2 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
         gl2.add_widget(self.nine_2)
         self.nine_2_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.nine_2_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.nine_2_button)
-        self.end_second_7 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_second_7)
+        gl2.add_widget(Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18))
         
         gl2.add_widget(Label(text="10" , color = "#02034e", size_hint=(None, None) , size = (68 , 50) , font_size =18 ))
         self.one_zero_1 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
@@ -207,8 +200,8 @@ class players2(Screen):
         self.one_one_2_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.one_one_2_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.one_one_2_button)
-        self.end_second_7 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_second_7)
+        self.end_second_4_1 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
+        gl2.add_widget(self.end_second_4_1)
         
         gl2.add_widget(Label(text="12" , color = "#02034e", size_hint=(None, None) , size = (68 , 50) , font_size =18 ))
         self.one_two_1 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
@@ -216,15 +209,13 @@ class players2(Screen):
         self.one_two_1_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.one_two_1_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.one_two_1_button)
-        self.end_first_4_2 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_first_4_2)
+        gl2.add_widget(Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18))
         self.one_two_2 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
         gl2.add_widget(self.one_two_2)
         self.one_two_2_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.one_two_2_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.one_two_2_button)
-        self.end_second_6 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_second_6)
+        gl2.add_widget(Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18))
         
         gl2.add_widget(Label(text="13" , color = "#02034e", size_hint=(None, None) , size = (68 , 50) , font_size =18 ))
         self.one_three_1 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
@@ -253,8 +244,8 @@ class players2(Screen):
         self.one_four_2_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.one_four_2_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.one_four_2_button)
-        self.end_second_7 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_second_7)
+        self.end_second_5_1 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
+        gl2.add_widget(self.end_second_5_1)
         
         gl2.add_widget(Label(text="15" , color = "#02034e", size_hint=(None, None) , size = (68 , 50) , font_size =18 ))
         self.one_five_1 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
@@ -262,15 +253,13 @@ class players2(Screen):
         self.one_five_1_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.one_five_1_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.one_five_1_button)
-        self.end_first_5_2 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_first_5_2)
+        gl2.add_widget(Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18))
         self.one_five_2 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
         gl2.add_widget(self.one_five_2)
         self.one_five_2_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.one_five_2_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.one_five_2_button)
-        self.end_second_7 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_second_7)
+        gl2.add_widget(Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18))
         
         gl2.add_widget(Label(text="16" , color = "#02034e", size_hint=(None, None) , size = (68, 50) , font_size =18 ))
         self.one_six_1 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
@@ -299,8 +288,8 @@ class players2(Screen):
         self.one_seven_2_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.one_seven_2_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.one_seven_2_button)
-        self.end_second_7 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_second_7)
+        self.end_second_6_1 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
+        gl2.add_widget(self.end_second_6_1)
         
         gl2.add_widget(Label(text="18" , color = "#02034e", size_hint=(None, None) , size = (68 , 50) , font_size =18 ))
         self.one_eight_1 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
@@ -308,15 +297,13 @@ class players2(Screen):
         self.one_eight_1_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.one_eight_1_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.one_eight_1_button)
-        self.end_first_6_2 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_first_6_2)
+        gl2.add_widget(Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18))
         self.one_eight_2 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
         gl2.add_widget(self.one_eight_2)
         self.one_eight_2_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.one_eight_2_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.one_eight_2_button)
-        self.end_second_9 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_second_9)
+        gl2.add_widget(Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18))
         
         gl2.add_widget(Label(text="19" , color = "#02034e", size_hint=(None, None) , size = (68 , 50) , font_size =18 ))
         self.one_nine_1 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
@@ -345,8 +332,8 @@ class players2(Screen):
         self.two_zero_2_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.two_zero_2_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.two_zero_2_button)
-        self.end_second_10 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_second_10)
+        self.end_second_7_1 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
+        gl2.add_widget(self.end_second_7_1)
         
         gl2.add_widget(Label(text="21" , color = "#02034e", size_hint=(None, 1) , size = (68 , 10) , font_size =18 ))
         self.two_one_1 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
@@ -354,15 +341,13 @@ class players2(Screen):
         self.two_one_1_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.two_one_1_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.two_one_1_button)
-        self.end_second_7 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_second_7)
+        gl2.add_widget(Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18))
         self.two_one_2 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
         gl2.add_widget(self.two_one_2)
         self.two_one_2_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.two_one_2_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.two_one_2_button)
-        self.end_second_7 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_second_7)
+        gl2.add_widget(Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18))
         
         gl2.add_widget(Label(text="22" , color = "#02034e", size_hint=(None, 1) , size = (68 , 10) , font_size =18 ))
         self.two_two_1 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
@@ -384,15 +369,15 @@ class players2(Screen):
         self.two_three_1_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.two_three_1_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.two_three_1_button)
-        self.end_second_7 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_second_7)
+        self.end_first_8_1 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
+        gl2.add_widget(self.end_first_8_1)
         self.two_three_2 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
         gl2.add_widget(self.two_three_2)
         self.two_three_2_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.two_three_2_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.two_three_2_button)
-        self.end_second_7 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_second_7)
+        self.end_second_8_1 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
+        gl2.add_widget(self.end_second_8_1)
         
         gl2.add_widget(Label(text="24" , color = "#02034e", size_hint=(None, 1) , size = (68 , 10) , font_size =18 ))
         self.two_four_1 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
@@ -400,15 +385,13 @@ class players2(Screen):
         self.two_four_1_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.two_four_1_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.two_four_1_button)
-        self.end_second_7 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_second_7)
+        gl2.add_widget(Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18))
         self.two_four_2 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
         gl2.add_widget(self.two_four_2)
         self.two_four_2_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.two_four_2_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.two_four_2_button)
-        self.end_second_7 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_second_7)
+        gl2.add_widget(Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18))
         
         gl2.add_widget(Label(text="25" , color = "#02034e", size_hint=(None, 1) , size = (68 , 10) , font_size =18 ))
         self.two_five_1 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
@@ -430,15 +413,15 @@ class players2(Screen):
         self.two_six_1_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.two_six_1_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.two_six_1_button)
-        self.end_second_7 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_second_7)
+        self.end_first_9_1 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
+        gl2.add_widget(self.end_first_9_1)
         self.two_six_2 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
         gl2.add_widget(self.two_six_2)
         self.two_six_2_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.two_six_2_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.two_six_2_button)
-        self.end_second_7 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_second_7)
+        self.end_second_9_1 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
+        gl2.add_widget(self.end_second_9_1)
         
         gl2.add_widget(Label(text="27" , color = "#02034e", size_hint=(None, 1) , size = (68 , 10) , font_size =18 ))
         self.two_seven_1 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
@@ -446,15 +429,13 @@ class players2(Screen):
         self.two_seven_1_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.two_seven_1_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.two_seven_1_button)
-        self.end_second_7 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_second_7)
+        gl2.add_widget(Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18))
         self.two_seven_2 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
         gl2.add_widget(self.two_seven_2)
         self.two_seven_2_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.two_seven_2_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.two_seven_2_button)
-        self.end_second_7 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_second_7)
+        gl2.add_widget(Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18))
         
         gl2.add_widget(Label(text="28" , color = "#02034e", size_hint=(None, 1) , size = (68 , 10) , font_size =18 ))
         self.two_eight_1 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
@@ -476,15 +457,15 @@ class players2(Screen):
         self.two_nine_1_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.two_nine_1_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.two_nine_1_button)
-        self.end_second_7 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_second_7)
+        self.end_first_10_1 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
+        gl2.add_widget(self.end_first_10_1)
         self.two_nine_2 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
         gl2.add_widget(self.two_nine_2)
         self.two_nine_2_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.two_nine_2_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.two_nine_2_button)
-        self.end_second_7 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_second_7)
+        self.end_second_10_1 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
+        gl2.add_widget(self.end_second_10_1)
         
         gl2.add_widget(Label(text="30" , color = "#02034e", size_hint=(None, 1) , size = (68 , 10) , font_size =18 ))
         self.three_zero_1 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
@@ -492,15 +473,13 @@ class players2(Screen):
         self.three_zero_1_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.three_zero_1_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.three_zero_1_button)
-        self.end_second_7 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_second_7)
+        gl2.add_widget(Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18))
         self.three_zero_2 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
         gl2.add_widget(self.three_zero_2)
         self.three_zero_2_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.three_zero_2_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.three_zero_2_button)
-        self.end_second_7 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_second_7)
+        gl2.add_widget(Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18))
         
         gl2.add_widget(Label(text="extra-1" , color = "#02034e", size_hint=(None, None) , size = (68 , 50) , font_size =18 ))
         self.extra_one_1 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
@@ -529,8 +508,8 @@ class players2(Screen):
         self.extra_two_2_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.extra_two_2_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.extra_two_2_button)
-        self.end_second_ex_1 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_second_ex_1)
+        self.end_second_ex_1_1 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
+        gl2.add_widget(self.end_second_ex_1_1)
         
         gl2.add_widget(Label(text="extra-3" , color = "#02034e", size_hint=(None, None) , size = (68 , 50) , font_size =18 ))
         self.extra_three_1 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
@@ -538,15 +517,13 @@ class players2(Screen):
         self.extra_three_1_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.extra_three_1_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.extra_three_1_button)
-        self.end_first_ex_1_2 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_first_ex_1_2)
+        gl2.add_widget(Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18))
         self.extra_three_2 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
         gl2.add_widget(self.extra_three_2)
         self.extra_three_2_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.extra_three_2_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.extra_three_2_button)
-        self.end_second_7 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_second_7)
+        gl2.add_widget(Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18))
         
         gl2.add_widget(Label(text="extra-4" , color = "#02034e", size_hint=(None, None) , size = (68 , 50) , font_size =18 ))
         self.extra_four_1 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
@@ -575,8 +552,8 @@ class players2(Screen):
         self.extra_five_2_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.extra_five_2_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.extra_five_2_button)
-        self.end_second_7 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_second_7)
+        self.end_second_ex_2_1 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
+        gl2.add_widget(self.end_second_ex_2_1)
         
         gl2.add_widget(Label(text="extra-6" , color = "#02034e", size_hint=(None, None) , size = (68 , 50) , font_size =18 ))
         self.extra_six_1 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
@@ -584,15 +561,13 @@ class players2(Screen):
         self.extra_six_1_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.extra_six_1_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.extra_six_1_button)
-        self.end_first_ex_2_2 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_first_ex_2_2)
+        gl2.add_widget(Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18))
         self.extra_six_2 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
         gl2.add_widget(self.extra_six_2)
         self.extra_six_2_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.extra_six_2_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.extra_six_2_button)
-        self.end_second_ex_3 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_second_ex_3)
+        gl2.add_widget(Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18))
         
         gl2.add_widget(Label(text="extra-7" , color = "#02034e", size_hint=(None, 1) , size = (68 , 10) , font_size =18 ))
         self.extra_seven_1 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
@@ -630,15 +605,13 @@ class players2(Screen):
         self.extra_nine_1_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.extra_nine_1_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.extra_nine_1_button)
-        self.end_first_ex_3_2 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_first_ex_3_2)
+        gl2.add_widget(Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18))
         self.extra_nine_2 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
         gl2.add_widget(self.extra_nine_2)
         self.extra_nine_2_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
         self.extra_nine_2_button.bind(on_release=self.switch_button_type)
         gl2.add_widget(self.extra_nine_2_button)
-        self.end_second_ex_3_2 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_second_ex_3_2)
+        gl2.add_widget(Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18))
         
         self.final_percentage_1 = Label(text="" , color = "#02034e", size_hint_y=None, height= 32 , font_size =20, size_hint=(None, None) , size = (68 , 32) , padding = (210 , 1200 , 1 , 1) )
         self.final_percentage_2 = Label(text="" , color = "#02034e", size_hint_y=None, height= 32 , font_size =20, size_hint=(None, None) , size = (68 , 32) , padding = (260 , 1200 , 1 , 1) )
@@ -687,126 +660,147 @@ class players2(Screen):
 
     def math_operation(self, *args):
         
+        self.check_info = [[], []]
+        
+        self.name_list = [self.name_1, self.name_2]
+        
+        self.conn = sqlite3.connect(path_db())
+        cursor = self.conn.cursor()
+        
         flag = True
+        end_count = 0
         sum_dro = 0
         sum_take = 0
         sum_guard = 0
+        count_dro = 0
+        count_take = 0
+        count_guard = 0
         
         helper = 0
-        listik = [self.one_1.text, self.two_1.text, self.three_1.text, self.four_1.text, self.five_1.text, self.six_1.text, self.seven_1.text, self.eight_1.text, self.nine_1.text, self.one_zero_1.text,
+        
+        self.persentages_stat = [[], []]
+        
+        self.listik = [[self.one_1.text, self.two_1.text, self.three_1.text, self.four_1.text, self.five_1.text, self.six_1.text, self.seven_1.text, self.eight_1.text, self.nine_1.text, self.one_zero_1.text,
                   self.one_one_1.text, self.one_two_1.text, self.one_three_1.text, self.one_four_1.text, self.one_five_1.text, self.one_six_1.text, self.one_seven_1.text, self.one_eight_1.text, self.one_nine_1.text,
-                  self.two_zero_1.text, self.two_one_1.text, self.two_two_1.text, self.two_three_1.text, self.two_four_1.text, self.two_five_1.text, self.two_six_1.text, self.two_seven_1.text, self.two_eight_1.text,
-                  self.two_nine_1.text, self.three_zero_1.text, self.extra_one_1.text, self.extra_two_1.text, self.extra_three_1.text, self.extra_four_1.text, self.extra_five_1.text,
-                  self.extra_six_1.text, self.extra_seven_1.text, self.extra_eight_1.text, self.extra_nine_1.text]
-        
-        type_listik = [self.one_1_button.text, self.two_1_button.text, self.three_1_button.text, self.four_1_button.text, self.five_1_button.text, self.six_1_button.text, self.seven_1_button.text, self.eight_1_button.text, self.nine_1_button.text,
-                       self.one_zero_1_button.text, self.one_one_1_button.text, self.one_two_1_button.text, self.one_three_1_button.text, self.one_four_1_button.text, self.one_five_1_button.text, self.one_six_1_button.text, self.one_seven_1_button.text,
-                       self.one_eight_1_button.text, self.one_nine_1_button.text, self.two_zero_1_button.text, self.two_one_1_button.text, self.two_two_1_button.text, self.two_three_1_button.text, self.two_four_1_button.text, self.two_five_1_button.text,
-                       self.two_six_1_button.text, self.two_seven_1_button.text, self.two_eight_1_button.text, self.two_nine_1_button.text, self.three_zero_1_button.text, self.extra_one_1_button.text, self.extra_two_1_button.text, self.extra_three_1_button.text,
-                       self.extra_four_1_button.text, self.extra_five_1_button.text, self.extra_six_1_button.text, self.extra_seven_1_button.text, self.extra_eight_1_button.text, self.extra_nine_1_button.text]
-        
-        for i in range(len(listik)):
-            if listik[i] == "":
-                helper = i
-                break
-            elif len(listik[i]) > 1:
-                flag = False
-            else:
-                listik[i] = int(listik[i])
-                continue
-        else:
-            helper = len(listik)
-            
-        if len(listik) - (listik.count("") + helper) == 0 and helper != 0 and flag == True:
-            
-            listik = listik[:helper]
-            type_listik = type_listik[:helper]
-        
-            for i in range(len(type_listik)):
-                if type_listik[i] == "D":
-                    sum_dro += listik[i]
-                    continue
-                if type_listik[i] == "T":
-                    sum_take += listik[i]
-                    continue
-                if type_listik[i] == "G":
-                    sum_guard += listik[i]
-                    continue
-        
-            helper = round(sum(listik) / (helper*4) * 100, 2)
-            if sum_dro != 0:
-                sum_dro = round(sum_dro / (type_listik.count("D")*4) * 100,)
-            if sum_take != 0:
-                sum_take = round(sum_take / (type_listik.count("T")*4) * 100, 2)
-            if sum_guard != 0:
-                sum_guard = round(sum_guard / (type_listik.count("G")*4) * 100, 2)
-        
-            self.final_percentage_1.text = f"Процент: {helper}"
-            self.types_throw_1.text = f"Dro: {sum_dro} \nTake: {sum_take} \nGuard: {sum_guard}"
-        else:
-            self.final_percentage_1.text = f"Ошибка, {helper}"
-            self.types_throw_1.text = ""
-        
-        flag = True
-        sum_dro = 0
-        sum_take = 0
-        sum_guard = 0
-        
-        helper = 0
-        
-        listik = [self.one_2.text, self.two_2.text, self.three_2.text, self.four_2.text, self.five_2.text, self.six_2.text, self.seven_2.text, self.eight_2.text, self.nine_2.text, self.one_zero_2.text,
+                  self.two_zero_1.text, self.extra_one_1.text, self.extra_two_1.text, self.extra_three_1.text, self.extra_four_1.text, self.extra_five_1.text, self.extra_six_1.text], [self.one_2.text, self.two_2.text, self.three_2.text, self.four_2.text, self.five_2.text, self.six_2.text, self.seven_2.text, self.eight_2.text, self.nine_2.text, self.one_zero_2.text,
                   self.one_one_2.text, self.one_two_2.text, self.one_three_2.text, self.one_four_2.text, self.one_five_2.text, self.one_six_2.text, self.one_seven_2.text, self.one_eight_2.text, self.one_nine_2.text,
-                  self.two_zero_2.text, self.two_one_2.text, self.two_two_2.text, self.two_three_2.text, self.two_four_2.text, self.two_five_2.text, self.two_six_2.text, self.two_seven_2.text, self.two_eight_2.text,
-                  self.two_nine_2.text, self.three_zero_2.text, self.extra_one_2.text, self.extra_two_2.text, self.extra_three_2.text, self.extra_four_2.text, self.extra_five_2.text,
-                  self.extra_six_2.text, self.extra_seven_2.text, self.extra_eight_2.text, self.extra_nine_2.text]
+                  self.two_zero_2.text, self.extra_one_2.text, self.extra_two_2.text, self.extra_three_2.text, self.extra_four_2.text, self.extra_five_2.text, self.extra_six_2.text]]
         
-        type_listik = [self.one_2_button.text, self.two_2_button.text, self.three_2_button.text, self.four_2_button.text, self.five_2_button.text, self.six_2_button.text, self.seven_2_button.text, self.eight_2_button.text, self.nine_2_button.text,
+        self.type_listik = [[self.one_1_button.text, self.two_1_button.text, self.three_1_button.text, self.four_1_button.text, self.five_1_button.text, self.six_1_button.text, self.seven_1_button.text, self.eight_1_button.text, self.nine_1_button.text,
+                       self.one_zero_1_button.text, self.one_one_1_button.text, self.one_two_1_button.text, self.one_three_1_button.text, self.one_four_1_button.text, self.one_five_1_button.text, self.one_six_1_button.text, self.one_seven_1_button.text,
+                       self.one_eight_1_button.text, self.one_nine_1_button.text, self.two_zero_1_button.text, self.extra_one_1_button.text, self.extra_two_1_button.text, self.extra_three_1_button.text,
+                       self.extra_four_1_button.text, self.extra_five_1_button.text, self.extra_six_1_button.text], [self.one_2_button.text, self.two_2_button.text, self.three_2_button.text, self.four_2_button.text, self.five_2_button.text, self.six_2_button.text, self.seven_2_button.text, self.eight_2_button.text, self.nine_2_button.text,
                        self.one_zero_2_button.text, self.one_one_2_button.text, self.one_two_2_button.text, self.one_three_2_button.text, self.one_four_2_button.text, self.one_five_2_button.text, self.one_six_2_button.text, self.one_seven_2_button.text,
-                       self.one_eight_2_button.text, self.one_nine_2_button.text, self.two_zero_2_button.text, self.two_one_2_button.text, self.two_two_2_button.text, self.two_three_2_button.text, self.two_four_2_button.text, self.two_five_2_button.text,
-                       self.two_six_2_button.text, self.two_seven_2_button.text, self.two_eight_2_button.text, self.two_nine_2_button.text, self.three_zero_2_button.text, self.extra_one_2_button.text, self.extra_two_2_button.text, self.extra_three_2_button.text,
-                       self.extra_four_2_button.text, self.extra_five_2_button.text, self.extra_six_2_button.text, self.extra_seven_2_button.text, self.extra_eight_2_button.text, self.extra_nine_2_button.text]
+                       self.one_eight_2_button.text, self.one_nine_2_button.text, self.two_zero_2_button.text, self.extra_one_2_button.text, self.extra_two_2_button.text, self.extra_three_2_button.text,
+                       self.extra_four_2_button.text, self.extra_five_2_button.text, self.extra_six_2_button.text]]
         
-        for i in range(len(listik)):
-            if listik[i] == "":
-                helper = i
-                break
-            elif len(listik[i]) > 1:
-                flag = False
+        self.end_list = [[self.end_first_1_1, self.end_first_2_1, self.end_first_3_1, self.end_first_4_1, self.end_first_5_1, self.end_first_6_1, self.end_first_7_1, self.end_first_8_1, self.end_first_9_1, self.end_first_10_1, self.end_first_ex_1_1, self.end_first_ex_2_1, self.end_first_ex_3_1],
+                        [self.end_second_1_1, self.end_second_2_1, self.end_second_3_1, self.end_second_4_1, self.end_second_5_1, self.end_second_6_1, self.end_second_7_1, self.end_second_8_1, self.end_second_9_1, self.end_second_10_1, self.end_second_ex_1_1, self.end_second_ex_2_1, self.end_second_ex_3_1]]
+        
+        self.final_percentage_list = [self.final_percentage_1, self.final_percentage_2]
+        self.types_throw_list = [self.types_throw_1, self.types_throw_2]
+        
+        for i in range(len(self.listik)):
+            
+            name = self.name_list[i].text.title()
+            cursor.execute("""
+                SELECT 1 FROM players WHERE first_and_second_name = ?
+            """, (name,))
+            
+            result = cursor.fetchone()
+            if result:
+                for j in range(len(self.listik[i])):
+                    if self.listik[i][j] == "":
+                        self.check_info[i].append(j)
+                        continue
+                    elif len(self.listik[i][j]) > 1:
+                        flag = False
+                        break
+                    else:
+                        self.listik[i][j] = int(self.listik[i][j])
+                else:
+                    helper = 1
+                    
+                if helper != 0 and flag == True and len(self.check_info[i]) != len(self.listik[i]):
+                    helper = 0
+                    for k in range(len(self.type_listik[i])):
+                        if k not in self.check_info[i]:
+                            helper += self.listik[i][k]
+                            end_count += self.listik[i][k]
+                            if self.type_listik[i][k] == "D":
+                                sum_dro += self.listik[i][k]
+                                count_dro += 1
+                            else:
+                                if self.type_listik[i][k] == "T":
+                                    sum_take += self.listik[i][k]
+                                    count_take += 1
+                                else:
+                                    if self.type_listik[i][k] == "G":
+                                        sum_guard += self.listik[i][k]
+                                        count_guard += 1
+                            if k % 3 == 2:
+                                end_count = round(end_count * 100 / 12, 2)
+                                self.persentages_stat[i].append(end_count)
+                                self.end_list[i][k//3].text = f"{end_count}"
+                                end_count = 0
+                        else:
+                            if end_count == 0:
+                                continue
+                            else:
+                                
+                                if k % 3 == 1:
+                                    end_count = round(end_count * 100 / 4, 2)
+                                    self.persentages_stat[i].append(end_count)
+                                    self.end_list[i][k//3].text = f"{end_count}"
+                                    end_count = 0
+                                    continue
+                                
+                                if k % 3 == 2:
+                                    end_count = round(end_count * 100 / 8, 2)
+                                    self.persentages_stat[i].append(end_count)
+                                    self.end_list[i][k//3].text = f"{end_count}"
+                                    end_count = 0
+                    
+                    helper = round(helper*100 / (((len(self.listik[i]) - len(self.check_info[i]))* 4)))
+                    if sum_dro != 0:
+                        sum_dro = round(sum_dro / (count_dro*4) * 100, 2)
+                        self.persentages_stat[i].append(sum_dro)
+                    else:
+                        self.persentages_stat[i].append(-1.0)
+                    if sum_take != 0:
+                        sum_take = round(sum_take / (count_take*4) * 100, 2)
+                        self.persentages_stat[i].append(sum_take)
+                    else:
+                        self.persentages_stat[i].append(-1.0)
+                    if sum_guard != 0:
+                        sum_guard = round(sum_guard / (count_guard*4) * 100, 2)
+                        self.persentages_stat[i].append(sum_guard)
+                    else:
+                        self.persentages_stat[i].append(-1.0)
+                        
+                    self.persentages_stat[i].append(helper)
+                    self.persentages_stat[i] = self.persentages_stat[i][-4:] + self.persentages_stat[i][:-4]
+                    
+                    self.final_percentage_list[i].text = f"Процент: {helper}"
+                    self.types_throw_list[i].text = f"Dro: {sum_dro} \nTake: {sum_take} \nGuard: {sum_guard}"
+                
+                else:
+                    self.final_percentage_list[i].text = f"Ошибка, {helper}"
+                    self.types_throw_list[i].text = ""
+
+                flag = True
+                sum_dro = 0
+                sum_take = 0
+                sum_guard = 0
+                count_dro = 0
+                count_take = 0
+                count_guard = 0
+            
+                helper = 0
+                
             else:
-                listik[i] = int(listik[i])
-                continue
-        else:
-            helper = len(listik)
-            
-        if len(listik) - (listik.count("") + helper) == 0 and helper != 0 and flag == True:
-            
-            listik = listik[:helper]
-            type_listik = type_listik[:helper]
-        
-            for i in range(len(type_listik)):
-                if type_listik[i] == "D":
-                    sum_dro += listik[i]
-                    continue
-                if type_listik[i] == "T":
-                    sum_take += listik[i]
-                    continue
-                if type_listik[i] == "G":
-                    sum_guard += listik[i]
-                    continue
-        
-            helper = round(sum(listik) / (helper*4) * 100, 2)
-            if sum_dro != 0:
-                sum_dro = round(sum_dro / (type_listik.count("D")*4) * 100,)
-            if sum_take != 0:
-                sum_take = round(sum_take / (type_listik.count("T")*4) * 100, 2)
-            if sum_guard != 0:
-                sum_guard = round(sum_guard / (type_listik.count("G")*4) * 100, 2)
-        
-            self.final_percentage_2.text = f"Процент: {helper}"
-            self.types_throw_2.text = f"Dro: {sum_dro} \nTake: {sum_take} \nGuard: {sum_guard}"
-        else:
-            self.final_percentage_2.text = f"Ошибка, {helper}"
-            self.types_throw_2.text = ""
+                self.final_percentage_list[i].text = "Ошибка игрока"
+                self.types_throw_list[i].text = ""
             
     def save_match(self, instance, *args):
         pass
