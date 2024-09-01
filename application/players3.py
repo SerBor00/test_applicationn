@@ -786,6 +786,8 @@ class players3(Screen):
     def save_match(self, instance, *args):
         if "Ошибка" in self.final_percentage_1.text or "Ошибка" in self.final_percentage_2.text or "Ошибка" in self.final_percentage_3.text or self.final_percentage_1 == "":
             self.save_info.text = "Ошибка сохранения"
+        elif self.name_match.text == "" or self.date_match.text == "" or self.name_team.text == "":
+            self.save_info.text = "Ошибка с данными матча"
         else:
             
             def create_insert_query(column_names, values):

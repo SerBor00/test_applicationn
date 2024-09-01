@@ -17,11 +17,11 @@ class archive_matches(Screen):
         self.conn = sqlite3.connect(path_db())
         self.cursor = self.conn.cursor()
         
-        self.cursor.execute("SELECT * FROM match_persteges_info")
+        self.cursor.execute("SELECT * FROM points")
         self.match_players = self.cursor.fetchall()
         
         for i in self.match_players:
-            bl.add_widget(Label(text= f"Проценты: {i}"))
+            bl.add_widget(Label(text= f"Очки: {i}"))
             
         
         archive = Button(text="Назад", size_hint=(None, None) , size = (270 , 60))

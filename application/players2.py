@@ -623,6 +623,8 @@ class players2(Screen):
         grid_per.add_widget(self.types_throw_1)
         grid_per.add_widget(self.types_throw_2)
         
+        self.save_info = Label(text="" , color = "#02034e", size_hint_y=None, height= 32 , font_size =20, size_hint=(None, None) , size = (68 , 32) , padding = (210 , 1200 , 1 , 1) )
+        fl2.add_widget(self.save_info)
 
         end = Button(text= "Рассчёт", pos=(0, 75))
         end.bind(on_release=self.math_operation)
@@ -661,6 +663,7 @@ class players2(Screen):
     def math_operation(self, *args):
         
         self.check_info = [[], []]
+        self.check_numbers = [[], []]
         
         self.name_list = [self.name_1, self.name_2]
         
@@ -668,7 +671,7 @@ class players2(Screen):
         cursor = self.conn.cursor()
         
         flag = True
-        end_count = 0
+        end_count = list()
         sum_dro = 0
         sum_take = 0
         sum_guard = 0
@@ -682,17 +685,17 @@ class players2(Screen):
         
         self.listik = [[self.one_1.text, self.two_1.text, self.three_1.text, self.four_1.text, self.five_1.text, self.six_1.text, self.seven_1.text, self.eight_1.text, self.nine_1.text, self.one_zero_1.text,
                   self.one_one_1.text, self.one_two_1.text, self.one_three_1.text, self.one_four_1.text, self.one_five_1.text, self.one_six_1.text, self.one_seven_1.text, self.one_eight_1.text, self.one_nine_1.text,
-                  self.two_zero_1.text, self.extra_one_1.text, self.extra_two_1.text, self.extra_three_1.text, self.extra_four_1.text, self.extra_five_1.text, self.extra_six_1.text], [self.one_2.text, self.two_2.text, self.three_2.text, self.four_2.text, self.five_2.text, self.six_2.text, self.seven_2.text, self.eight_2.text, self.nine_2.text, self.one_zero_2.text,
+                  self.two_zero_1.text, self.two_one_1.text, self.two_two_1.text, self.two_three_1.text, self.two_four_1.text, self.two_five_1.text, self.two_six_1.text, self.two_seven_1.text, self.two_eight_1.text, self.two_nine_1.text, self.three_zero_1.text, self.extra_one_1.text, self.extra_two_1.text, self.extra_three_1.text, self.extra_four_1.text, self.extra_five_1.text, self.extra_six_1.text, self.extra_seven_1.text, self.extra_eight_1.text, self.extra_nine_1.text], 
+                       [self.one_2.text, self.two_2.text, self.three_2.text, self.four_2.text, self.five_2.text, self.six_2.text, self.seven_2.text, self.eight_2.text, self.nine_2.text, self.one_zero_2.text,
                   self.one_one_2.text, self.one_two_2.text, self.one_three_2.text, self.one_four_2.text, self.one_five_2.text, self.one_six_2.text, self.one_seven_2.text, self.one_eight_2.text, self.one_nine_2.text,
-                  self.two_zero_2.text, self.extra_one_2.text, self.extra_two_2.text, self.extra_three_2.text, self.extra_four_2.text, self.extra_five_2.text, self.extra_six_2.text]]
+                  self.two_zero_2.text, self.two_one_2.text, self.two_two_2.text, self.two_three_2.text, self.two_four_2.text, self.two_five_2.text, self.two_six_2.text, self.two_seven_2.text, self.two_eight_2.text, self.two_nine_2.text, self.three_zero_2.text, self.extra_one_2.text, self.extra_two_2.text, self.extra_three_2.text, self.extra_four_2.text, self.extra_five_2.text, self.extra_six_2.text, self.extra_seven_2.text, self.extra_eight_2.text, self.extra_nine_2.text]]
         
         self.type_listik = [[self.one_1_button.text, self.two_1_button.text, self.three_1_button.text, self.four_1_button.text, self.five_1_button.text, self.six_1_button.text, self.seven_1_button.text, self.eight_1_button.text, self.nine_1_button.text,
                        self.one_zero_1_button.text, self.one_one_1_button.text, self.one_two_1_button.text, self.one_three_1_button.text, self.one_four_1_button.text, self.one_five_1_button.text, self.one_six_1_button.text, self.one_seven_1_button.text,
-                       self.one_eight_1_button.text, self.one_nine_1_button.text, self.two_zero_1_button.text, self.extra_one_1_button.text, self.extra_two_1_button.text, self.extra_three_1_button.text,
-                       self.extra_four_1_button.text, self.extra_five_1_button.text, self.extra_six_1_button.text], [self.one_2_button.text, self.two_2_button.text, self.three_2_button.text, self.four_2_button.text, self.five_2_button.text, self.six_2_button.text, self.seven_2_button.text, self.eight_2_button.text, self.nine_2_button.text,
+                       self.one_eight_1_button.text, self.one_nine_1_button.text, self.two_zero_1_button.text, self.two_one_1_button.text, self.two_two_1_button.text, self.two_three_1_button.text, self.two_four_1_button.text, self.two_five_1_button.text, self.two_six_1_button.text, self.two_seven_1_button.text, self.two_eight_1_button.text, self.two_nine_1_button.text, self.three_zero_1_button.text, self.extra_one_1_button.text, self.extra_two_1_button.text, self.extra_three_1_button.text, self.extra_four_1_button.text, self.extra_five_1_button.text, self.extra_six_1_button.text, self.extra_seven_1_button.text, self.extra_eight_1_button.text, self.extra_nine_1_button.text], 
+                            [self.one_2_button.text, self.two_2_button.text, self.three_2_button.text, self.four_2_button.text, self.five_2_button.text, self.six_2_button.text, self.seven_2_button.text, self.eight_2_button.text, self.nine_2_button.text,
                        self.one_zero_2_button.text, self.one_one_2_button.text, self.one_two_2_button.text, self.one_three_2_button.text, self.one_four_2_button.text, self.one_five_2_button.text, self.one_six_2_button.text, self.one_seven_2_button.text,
-                       self.one_eight_2_button.text, self.one_nine_2_button.text, self.two_zero_2_button.text, self.extra_one_2_button.text, self.extra_two_2_button.text, self.extra_three_2_button.text,
-                       self.extra_four_2_button.text, self.extra_five_2_button.text, self.extra_six_2_button.text]]
+                       self.one_eight_2_button.text, self.one_nine_2_button.text, self.two_zero_2_button.text, self.two_one_2_button.text, self.two_two_2_button.text, self.two_three_2_button.text, self.two_four_2_button.text, self.two_five_2_button.text, self.two_six_2_button.text, self.two_seven_2_button.text, self.two_eight_2_button.text, self.two_nine_2_button.text, self.three_zero_2_button.text, self.extra_one_2_button.text, self.extra_two_2_button.text, self.extra_three_2_button.text, self.extra_four_2_button.text, self.extra_five_2_button.text, self.extra_six_2_button.text, self.extra_seven_2_button.text, self.extra_eight_2_button.text, self.extra_nine_2_button.text]]
         
         self.end_list = [[self.end_first_1_1, self.end_first_2_1, self.end_first_3_1, self.end_first_4_1, self.end_first_5_1, self.end_first_6_1, self.end_first_7_1, self.end_first_8_1, self.end_first_9_1, self.end_first_10_1, self.end_first_ex_1_1, self.end_first_ex_2_1, self.end_first_ex_3_1],
                         [self.end_second_1_1, self.end_second_2_1, self.end_second_3_1, self.end_second_4_1, self.end_second_5_1, self.end_second_6_1, self.end_second_7_1, self.end_second_8_1, self.end_second_9_1, self.end_second_10_1, self.end_second_ex_1_1, self.end_second_ex_2_1, self.end_second_ex_3_1]]
@@ -718,15 +721,16 @@ class players2(Screen):
                         break
                     else:
                         self.listik[i][j] = int(self.listik[i][j])
+                        self.check_numbers[i].append(self.listik[i][j])
                 else:
                     helper = 1
                     
                 if helper != 0 and flag == True and len(self.check_info[i]) != len(self.listik[i]):
                     helper = 0
-                    for k in range(len(self.type_listik[i])):
+                    for k in range(len(self.listik[i])):
                         if k not in self.check_info[i]:
                             helper += self.listik[i][k]
-                            end_count += self.listik[i][k]
+                            end_count.append(self.listik[i][k])
                             if self.type_listik[i][k] == "D":
                                 sum_dro += self.listik[i][k]
                                 count_dro += 1
@@ -739,29 +743,21 @@ class players2(Screen):
                                         sum_guard += self.listik[i][k]
                                         count_guard += 1
                             if k % 3 == 2:
-                                end_count = round(end_count * 100 / 12, 2)
+                                end_count = round(sum(end_count) * 100 / (len(end_count)*4), 2)
                                 self.persentages_stat[i].append(end_count)
                                 self.end_list[i][k//3].text = f"{end_count}"
-                                end_count = 0
+                                end_count = list()
                         else:
-                            if end_count == 0:
+                            if len(end_count) == 0:
                                 continue
-                            else:
+                            if k % 3 == 2:
+                                end_count = round(sum(end_count) * 100 / (len(end_count)*4), 2)
+                                self.persentages_stat[i].append(end_count)
+                                self.end_list[i][k//3].text = f"{end_count}"
+                                end_count = list()
                                 
-                                if k % 3 == 1:
-                                    end_count = round(end_count * 100 / 4, 2)
-                                    self.persentages_stat[i].append(end_count)
-                                    self.end_list[i][k//3].text = f"{end_count}"
-                                    end_count = 0
-                                    continue
-                                
-                                if k % 3 == 2:
-                                    end_count = round(end_count * 100 / 8, 2)
-                                    self.persentages_stat[i].append(end_count)
-                                    self.end_list[i][k//3].text = f"{end_count}"
-                                    end_count = 0
                     
-                    helper = round(helper*100 / (((len(self.listik[i]) - len(self.check_info[i]))* 4)))
+                    helper = round(helper*100 / ((len(self.listik[i]) - len(self.check_info[i]))* 4))
                     if sum_dro != 0:
                         sum_dro = round(sum_dro / (count_dro*4) * 100, 2)
                         self.persentages_stat[i].append(sum_dro)
@@ -795,7 +791,8 @@ class players2(Screen):
                 count_dro = 0
                 count_take = 0
                 count_guard = 0
-            
+                self.check_info[i].sort(reverse=True)
+                
                 helper = 0
                 
             else:
@@ -803,7 +800,80 @@ class players2(Screen):
                 self.types_throw_list[i].text = ""
             
     def save_match(self, instance, *args):
-        pass
+        if "Ошибка" in self.final_percentage_1.text or "Ошибка" in self.final_percentage_2.text or self.final_percentage_1 == "":
+            self.save_info.text = "Ошибка сохранения"
+        
+        elif self.name_match.text == "" or self.date_match.text == "" or self.name_team.text == "":
+            self.save_info.text = "Ошибка с данными матча"
+        else:
+            
+            def create_insert_query(column_names, values):
+                placeholders = ', '.join(['?'] * (len(values)+1))
+                query = f"INSERT INTO points ({', '.join(column_names)}) VALUES ({placeholders})"
+                return query
+            
+            #def create_insert_query_2(column_names, values):
+                #placeholders = ', '.join(['?'] * (len(values)+1))
+                #query = f"INSERT INTO match_persteges_info ({', '.join(column_names)}) VALUES ({placeholders})"
+                #return query
+            
+            column_names = ['match_id', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty', 'twenty_one', 
+                    'twenty_two', 'twenty_three', 'twenty_four', 'twenty_five', 'twenty_six', 'twenty_seven', 'twenty_eight', 'twenty_nine', 'thirty', 'extra_one', 'extra_two', 'extra_three', 'extra_four', 'extra_five', 'extra_six', 'extra_seven', 'extra_eight', 'extra_nine']
+            
+            column_names_2 = ['points_id', 'dro_persent', 'take_persent', 'guard_persent', 'final_persent', 'end_1_persent', 'end_2_persent', 'end_3_persent', 'end_4_persent', 'end_5_persent', 'end_6_persent',
+                              'end_7_persent', 'end_8_persent', 'end_9_persent', 'end_10_persent', 'ex_1_end_persent', 'ex_2_end_persent', 'ex_3_end_persent']
+            
+            name_match = self.name_match.text
+            date_game = self.date_match.text
+            name_team = self.name_team.text
+            
+            cursor = self.conn.cursor()
+            
+            cursor.execute("""
+                INSERT INTO matches (name_of_game, date_of_game, name_of_team) VALUES (?, ?, ?)
+            """, (name_match, date_game, name_team))
+            
+            cursor.execute("""
+                SELECT LAST_INSERT_ROWID()
+            """)
+
+            match_id = cursor.lastrowid
+            
+            for i in range(2):
+                name = self.name_list[i].text.title()
+                cursor.execute("""
+                    SELECT player_id FROM players WHERE first_and_second_name = ?
+                """, (name,))
+                player_id = cursor.fetchone()
+                
+                cursor.execute("""
+                    INSERT INTO match_players (match_id, player_id) VALUES (?, ?)
+                """, (match_id, player_id[0]))
+                
+                for j in self.check_info[i]:
+                    del column_names[j+1]
+                    
+                query = create_insert_query(column_names, self.check_numbers[i])
+                cursor.execute(query, (match_id, *self.check_numbers[i]))
+                
+                points_id = cursor.lastrowid
+                
+                cursor.execute("""
+                    INSERT INTO match_stats (match_id, points_id) VALUES (?, ?)
+                """, (match_id, points_id))
+                
+                #query = create_insert_query_2(column_names_2[:len(self.persentages_stat[i])+1], self.persentages_stat[i])
+                #cursor.execute(query, (points_id, *self.persentages_stat[i]))
+                
+                #self.conn.commit()
+                
+                column_names = ['match_id', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty', 'twenty_one', 
+                    'twenty_two', 'twenty_three', 'twenty_four', 'twenty_five', 'twenty_six', 'twenty_seven', 'twenty_eight', 'twenty_nine', 'thirty', 'extra_one', 'extra_two', 'extra_three', 'extra_four', 'extra_five', 'extra_six', 'extra_seven', 'extra_eight', 'extra_nine']
+                
+            
+            self.conn.commit()
+            self.conn.close()
+            self.save_info.text = f"Успешно сохранено"
             
     def switch_match_plus(self, *args):
         self.manager.current = "Игра+"
