@@ -11,13 +11,15 @@ import sqlite3
 class players2(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        bl = BoxLayout(size_hint_y=None, height= 300) #height=300
-        gl = GridLayout(cols= 3 , spacing=(1 , 1) , padding= (1 , 1 , 1 , 1))
+        bl = BoxLayout(size_hint_y=None, height= 200) #height=300
+        gl = GridLayout(cols= 3 , rows=2 , spacing=(1 , 1) , padding= (1 , 1 , 1 , 1), size_hint_y=None, height= 80)
         gl2 = GridLayout(cols=7, spacing=(0 , 5), rows=39, padding= (1 , 1 , 1 , 1 ), size_hint_y=None, height= 1550) #height=1200
         fl2 = BoxLayout(size_hint_y=None, height= 150, padding= (1 , 1 , 1 , 1 )) #height=200
         grid_bl =  BoxLayout(size_hint=(1, None), height=1600, padding= (1 , 1 , 1 , 800 ))
-        main_bl = BoxLayout(size_hint=(1, None), height=2950) #height=1830
+        main_bl = BoxLayout(size_hint=(1, None), height=3100) #height=1830
         grid_per = GridLayout(cols = 2 , height=100, padding= (1 , 1 , 1 , 1 ), spacing=(70 , 10))
+        grid_post = GridLayout(cols= 3 , rows = 3, spacing=(1 , 1) , padding= (5 , 1 , 1 , 1), size_hint_y=None, height= 130 )
+        head =  BoxLayout(size_hint=(1, None), height=450, padding= (0 , 1 , 1 , 760 ))
 
         bl.add_widget(Label(text= "дата игры" , color = "#02034e", size_hint_y=None, height= 32 , font_size =24 , size_hint=(None, None) , size = (125 , 32)))
         self.date_match = TextInput(hint_text= "дд.мм.гггг", multiline=False, size_hint_y=None, height= 32, size_hint=(None, None) , size = (150 , 32))
@@ -30,10 +32,24 @@ class players2(Screen):
         bl.add_widget(Label(text= "название игры" , color = "#02034e", size_hint_y=None, height= 32 , font_size =24 , size_hint=(None, None) , size = (185 , 32)))
         self.name_match = TextInput(hint_text= "Первенство России среди кого и какого возраста", multiline=False, size_hint_y=None, height= 32, size_hint=(None, None) , size = (500 , 32))
         bl.add_widget(self.name_match)
+
+        grid_post.add_widget(Label(text= "имя фамилия" , color = "#02034e", size_hint_y=None, height= 32 , font_size =20, size_hint=(None, None) , size = (162 , 32) ))
+        grid_post.add_widget(Label(text= "имя фамилия" , color = "#02034e", size_hint_y=None, height= 32 , font_size =20, size_hint=(None, None) , size = (162 , 32) ))
+        grid_post.add_widget(Label(text= "" , color = "#02034e", size_hint_y=None, height= 32 , font_size =20, size_hint=(None, None) , size = (250 , 32) ))
+        self.first_post_name = TextInput(hint_text= "Имя Фамилия", size_hint_y=None, height= 32, size_hint=(None, None) , size = (162 , 48))
+        grid_post.add_widget(self.first_post_name)
+        self.second_post_name = TextInput(hint_text= "Имя Фамилия", size_hint_y=None, height= 32, size_hint=(None, None) , size = (162 , 48))
+        grid_post.add_widget(self.second_post_name)
+        grid_post.add_widget(Label(text= "" , color = "#02034e", size_hint_y=None, height= 32 , font_size =20, size_hint=(None, None) , size = (250 , 48) ))
+        self.first_post = TextInput(hint_text= "199.6", size_hint_y=None, height= 32, size_hint=(None, None) , size = (162 , 32))
+        grid_post.add_widget(self.first_post)
+        self.second_post = TextInput(hint_text= "199.6", size_hint_y=None, height= 32, size_hint=(None, None) , size = (162 , 32))
+        grid_post.add_widget(self.second_post)
+        grid_post.add_widget(Label(text= "результаты постановок" , color = "#02034e", size_hint_y=None, height= 32 , font_size =20, size_hint=(None, None) , size = (250 , 32) ))
         
         gl.add_widget(Label(text= "№" , color = "#02034e", size_hint_y=None, height= 32 , font_size =20, size_hint=(None, None) , size = (68 , 32) ))
-        gl.add_widget(Label(text= "Имя Фамилия" , color = "#02034e", size_hint_y=None, height= 32 , font_size =22, size_hint=(None, None) , size = (162 , 32) ))
-        gl.add_widget(Label(text= "Имя Фамилия" , color = "#02034e", size_hint_y=None, height= 32 , font_size =22, size_hint=(None, None) , size = (162 , 32) ))
+        gl.add_widget(Label(text= "имя фамилия" , color = "#02034e", size_hint_y=None, height= 32 , font_size =22, size_hint=(None, None) , size = (162 , 32) ))
+        gl.add_widget(Label(text= "имя фамилия" , color = "#02034e", size_hint_y=None, height= 32 , font_size =22, size_hint=(None, None) , size = (162 , 32) ))
         gl.add_widget(Label(text= "броска" , color = "#02034e", size_hint_y=None, height= 32 , font_size =20, size_hint=(None, None) , size = (68 , 48) ))
         self.name_1 = TextInput(hint_text= "Имя Фамилия", size_hint_y=None, height= 32, size_hint=(None, None) , size = (162 , 48))
         gl.add_widget(self.name_1)
@@ -613,14 +629,13 @@ class players2(Screen):
         gl2.add_widget(self.extra_nine_2_button)
         gl2.add_widget(Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18))
         
-        self.final_percentage_1 = Label(text="" , color = "#02034e", size_hint_y=None, height= 32 , font_size =20, size_hint=(None, None) , size = (68 , 32) , padding = (210 , 1200 , 1 , 1) )
-        self.final_percentage_2 = Label(text="" , color = "#02034e", size_hint_y=None, height= 32 , font_size =20, size_hint=(None, None) , size = (68 , 32) , padding = (260 , 1200 , 1 , 1) )
-        self.types_throw_1 = Label(text="" , color = "#02034e", size_hint_y=None, height= 80 , font_size =20, size_hint=(None, None) , size = (68 , 32) , padding = (165 , 1300 , 1 , 1) )
-        self.types_throw_2 = Label(text="" , color = "#02034e", size_hint_y=None, height= 64 , font_size =20, size_hint=(None, None) , size = (68 , 32) , padding = (205 , 1300 , 1 , 1) )
-        
+        self.final_percentage_1 = Label(text="" , color = "#02034e", size_hint_y=None, height= 32 , font_size =20, size_hint=(None, None) , size = (68 , 32) , padding = (210 , 1160 , 1 , 1) )
         grid_per.add_widget(self.final_percentage_1)
+        self.final_percentage_2 = Label(text="" , color = "#02034e", size_hint_y=None, height= 32 , font_size =20, size_hint=(None, None) , size = (68 , 32) , padding = (260 , 1160 , 1 , 1) )
         grid_per.add_widget(self.final_percentage_2)
+        self.types_throw_1 = Label(text="" , color = "#02034e", size_hint_y=None, height= 80 , font_size =20, size_hint=(None, None) , size = (68 , 32) , padding = (210 , 1200 , 1 , 1) )
         grid_per.add_widget(self.types_throw_1)
+        self.types_throw_2 = Label(text="" , color = "#02034e", size_hint_y=None, height= 64 , font_size =20, size_hint=(None, None) , size = (68 , 32) , padding = (260 , 1200 , 1 , 1) )
         grid_per.add_widget(self.types_throw_2)
         
         self.save_info = Label(text="" , color = "#02034e", size_hint_y=None, height= 32 , font_size =20, size_hint=(None, None) , size = (68 , 32) , padding = (210 , 1200 , 1 , 1) )
@@ -639,19 +654,22 @@ class players2(Screen):
         fl2.add_widget(match_plus)
         
         
-        grid_bl.add_widget(gl2)
+        main_bl.add_widget(head)
+        head.add_widget(bl)
+        head.add_widget(grid_post)
+        head.add_widget(gl)
 
-        main_bl.add_widget(bl)
-        main_bl.add_widget(gl)
         main_bl.add_widget(grid_bl)
+        grid_bl.add_widget(gl2)
         grid_bl.add_widget(grid_per)
         main_bl.add_widget(fl2)
-        
         
         scroll = ScrollView()
         scroll.add_widget(main_bl)
         
         self.add_widget(scroll)
+        
+        self.flag_page=True
     
     def switch_button_type(self, instance):
         new_type_throw = "-DTG"
@@ -662,8 +680,11 @@ class players2(Screen):
 
     def math_operation(self, *args):
         
+        self.flag_page=False
+                
         self.check_info = [[], []]
         self.check_numbers = [[], []]
+        self.check_persentages_numbers = [[0, 1, 2, 3, 4], [0, 1, 2, 3, 4]]
         
         self.name_list = [self.name_1, self.name_2]
         
@@ -745,6 +766,7 @@ class players2(Screen):
                             if k % 3 == 2:
                                 end_count = round(sum(end_count) * 100 / (len(end_count)*4), 2)
                                 self.persentages_stat[i].append(end_count)
+                                self.check_persentages_numbers[i].append(k//3+5)
                                 self.end_list[i][k//3].text = f"{end_count}"
                                 end_count = list()
                         else:
@@ -753,6 +775,7 @@ class players2(Screen):
                             if k % 3 == 2:
                                 end_count = round(sum(end_count) * 100 / (len(end_count)*4), 2)
                                 self.persentages_stat[i].append(end_count)
+                                self.check_persentages_numbers[i].append(k//3+5)
                                 self.end_list[i][k//3].text = f"{end_count}"
                                 end_count = list()
                                 
@@ -812,10 +835,10 @@ class players2(Screen):
                 query = f"INSERT INTO points ({', '.join(column_names)}) VALUES ({placeholders})"
                 return query
             
-            #def create_insert_query_2(column_names, values):
-                #placeholders = ', '.join(['?'] * (len(values)+1))
-                #query = f"INSERT INTO match_persteges_info ({', '.join(column_names)}) VALUES ({placeholders})"
-                #return query
+            def create_insert_query_2(column_names, values):
+                placeholders = ', '.join(['?'] * (len(values)+1))
+                query = f"INSERT INTO match_persteges_info ({', '.join(column_names)}) VALUES ({placeholders})"
+                return query
             
             column_names = ['match_id', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty', 'twenty_one', 
                     'twenty_two', 'twenty_three', 'twenty_four', 'twenty_five', 'twenty_six', 'twenty_seven', 'twenty_eight', 'twenty_nine', 'thirty', 'extra_one', 'extra_two', 'extra_three', 'extra_four', 'extra_five', 'extra_six', 'extra_seven', 'extra_eight', 'extra_nine']
@@ -862,13 +885,18 @@ class players2(Screen):
                     INSERT INTO match_stats (match_id, points_id) VALUES (?, ?)
                 """, (match_id, points_id))
                 
-                #query = create_insert_query_2(column_names_2[:len(self.persentages_stat[i])+1], self.persentages_stat[i])
-                #cursor.execute(query, (points_id, *self.persentages_stat[i]))
+                for j in range(len(self.check_persentages_numbers[i])):
+                    self.check_persentages_numbers[i][j] = column_names_2[j]
                 
-                #self.conn.commit()
+                query = create_insert_query_2(self.check_persentages_numbers[i], self.persentages_stat[i])
+                cursor.execute(query, (points_id, *self.persentages_stat[i]))
                 
-                column_names = ['match_id', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty', 'twenty_one', 
-                    'twenty_two', 'twenty_three', 'twenty_four', 'twenty_five', 'twenty_six', 'twenty_seven', 'twenty_eight', 'twenty_nine', 'thirty', 'extra_one', 'extra_two', 'extra_three', 'extra_four', 'extra_five', 'extra_six', 'extra_seven', 'extra_eight', 'extra_nine']
+                self.conn.commit()
+                if i == 1:
+                    continue
+                else:
+                    column_names = ['match_id', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty', 'twenty_one', 
+                        'twenty_two', 'twenty_three', 'twenty_four', 'twenty_five', 'twenty_six', 'twenty_seven', 'twenty_eight', 'twenty_nine', 'thirty', 'extra_one', 'extra_two', 'extra_three', 'extra_four', 'extra_five', 'extra_six', 'extra_seven', 'extra_eight', 'extra_nine']
                 
             
             self.conn.commit()
@@ -876,4 +904,41 @@ class players2(Screen):
             self.save_info.text = f"Успешно сохранено"
             
     def switch_match_plus(self, *args):
+        
+        name_list = [self.name_1, self.name_2]
+        
+        listik = [[self.one_1, self.two_1, self.three_1, self.four_1, self.five_1, self.six_1, self.seven_1, self.eight_1, self.nine_1, self.one_zero_1,
+                  self.one_one_1, self.one_two_1, self.one_three_1, self.one_four_1, self.one_five_1, self.one_six_1, self.one_seven_1, self.one_eight_1, self.one_nine_1,
+                  self.two_zero_1, self.two_one_1, self.two_two_1, self.two_three_1, self.two_four_1, self.two_five_1, self.two_six_1, self.two_seven_1, self.two_eight_1, self.two_nine_1, self.three_zero_1, self.extra_one_1, self.extra_two_1, self.extra_three_1, self.extra_four_1, self.extra_five_1, self.extra_six_1, self.extra_seven_1, self.extra_eight_1, self.extra_nine_1], 
+                  [self.one_2, self.two_2, self.three_2, self.four_2, self.five_2, self.six_2, self.seven_2, self.eight_2, self.nine_2, self.one_zero_2,
+                  self.one_one_2, self.one_two_2, self.one_three_2, self.one_four_2, self.one_five_2, self.one_six_2, self.one_seven_2, self.one_eight_2, self.one_nine_2,
+                  self.two_zero_2, self.two_one_2, self.two_two_2, self.two_three_2, self.two_four_2, self.two_five_2, self.two_six_2, self.two_seven_2, self.two_eight_2, self.two_nine_2, self.three_zero_2, self.extra_one_2, self.extra_two_2, self.extra_three_2, self.extra_four_2, self.extra_five_2, self.extra_six_2, self.extra_seven_2, self.extra_eight_2, self.extra_nine_2]]
+        
+        type_listik = [[self.one_1_button, self.two_1_button, self.three_1_button, self.four_1_button, self.five_1_button, self.six_1_button, self.seven_1_button, self.eight_1_button, self.nine_1_button,
+                       self.one_zero_1_button, self.one_one_1_button, self.one_two_1_button, self.one_three_1_button, self.one_four_1_button, self.one_five_1_button, self.one_six_1_button, self.one_seven_1_button,
+                       self.one_eight_1_button, self.one_nine_1_button, self.two_zero_1_button, self.two_one_1_button, self.two_two_1_button, self.two_three_1_button, self.two_four_1_button, self.two_five_1_button, self.two_six_1_button, self.two_seven_1_button, self.two_eight_1_button, self.two_nine_1_button, self.three_zero_1_button, self.extra_one_1_button, self.extra_two_1_button,
+                       self.extra_three_1_button, self.extra_four_1_button, self.extra_five_1_button, self.extra_six_1_button, self.extra_seven_1_button, self.extra_eight_1_button, self.extra_nine_1_button], 
+                       [self.one_2_button, self.two_2_button, self.three_2_button, self.four_2_button, self.five_2_button, self.six_2_button, self.seven_2_button, self.eight_2_button, self.nine_2_button,
+                       self.one_zero_2_button, self.one_one_2_button, self.one_two_2_button, self.one_three_2_button, self.one_four_2_button, self.one_five_2_button, self.one_six_2_button, self.one_seven_2_button,
+                       self.one_eight_2_button, self.one_nine_2_button, self.two_zero_2_button, self.two_one_2_button, self.two_two_2_button, self.two_three_2_button, self.two_four_2_button, self.two_five_2_button, self.two_six_2_button, self.two_seven_2_button, self.two_eight_2_button, self.two_nine_2_button, self.three_zero_2_button, self.extra_one_2_button, self.extra_two_2_button,
+                       self.extra_three_2_button, self.extra_four_2_button, self.extra_five_2_button, self.extra_six_2_button, self.extra_seven_2_button, self.extra_eight_2_button, self.extra_nine_2_button]]        
+                
+        for i in range(len(name_list)):
+            name_list[i].text = ""
+            for widget in listik[i] + type_listik[i]:
+                widget.text = "" if widget in listik[i] else "-"
+            if self.flag_page == False:
+                for widget in self.end_list[i]:
+                    widget.text = "."
+        if self.flag_page == False:
+            for i in range(len(self.types_throw_list)):
+                self.types_throw_list[i].text = ""
+                self.final_percentage_list[i].text = ""
+        
+        self.name_match.text = ""
+        self.name_team.text = ""
+        self.date_match.text = ""
+        
+        self.flag_page=True
+        
         self.manager.current = "Игра+"

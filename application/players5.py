@@ -17,10 +17,12 @@ class players5(Screen):
         gl = GridLayout(cols= 6 , spacing=(1 , 1) , padding= (1 , 1 , 1 , 1))
         gl2 = GridLayout(cols=16, rows=32, spacing=(0 , 5), padding= 1, size_hint_y=None, height= 1000)
         fl2 = BoxLayout(size_hint_y=None, height= 200)
-        main_bl = BoxLayout(size_hint=(1, None), height=2300)
-        grid_bl =  BoxLayout(size_hint=(1, None), height=1200, padding= (1 , 1 , 1 , 650 ))
+        main_bl = BoxLayout(size_hint=(1, None), height=2400)
+        grid_bl =  BoxLayout(size_hint=(1, None), height=1200, padding= (1 , 1 , 1 , 610 ))
         grid_per = GridLayout(cols = 5 ,  height=100, padding= (1 , 1 , 1 , 1 ), spacing=(65 , 10))
+        grid_post = GridLayout(cols=3, rows=3, spacing=(1 , 1), padding= (5 , 1 , 1 , 1 ), size_hint_y=None, height= 130)
         
+
         bl.add_widget(Label(text= "дата игры" , color = "#02034e", size_hint_y=None, height= 32 , font_size =24 , size_hint=(None, None) , size = (125 , 32)))
         self.date_match = TextInput(hint_text= "дд.мм.гггг", multiline=False, size_hint_y=None, height= 32, size_hint=(None, None) , size = (150 , 32))
         bl.add_widget(self.date_match)
@@ -32,6 +34,20 @@ class players5(Screen):
         bl.add_widget(Label(text= "название игры" , color = "#02034e", size_hint_y=None, height= 32 , font_size =24 , size_hint=(None, None) , size = (185 , 32)))
         self.name_match = TextInput(hint_text= "Первенство России среди кого и какого возраста", multiline=False, size_hint_y=None, height= 32, size_hint=(None, None) , size = (500 , 32))
         bl.add_widget(self.name_match)
+
+        grid_post.add_widget(Label(text= "имя фамилия" , color = "#02034e", size_hint_y=None, height= 32 , font_size =20, size_hint=(None, None) , size = (162 , 32) ))
+        grid_post.add_widget(Label(text= "имя фамилия" , color = "#02034e", size_hint_y=None, height= 32 , font_size =20, size_hint=(None, None) , size = (162 , 32) ))
+        grid_post.add_widget(Label(text= "" , color = "#02034e", size_hint_y=None, height= 32 , font_size =20, size_hint=(None, None) , size = (250 , 32) ))
+        self.first_post_name = TextInput(hint_text= "Имя Фамилия", size_hint_y=None, height= 32, size_hint=(None, None) , size = (162 , 48))
+        grid_post.add_widget(self.first_post_name)
+        self.second_post_name = TextInput(hint_text= "Имя Фамилия", size_hint_y=None, height= 32, size_hint=(None, None) , size = (162 , 48))
+        grid_post.add_widget(self.second_post_name)
+        grid_post.add_widget(Label(text= "" , color = "#02034e", size_hint_y=None, height= 32 , font_size =20, size_hint=(None, None) , size = (250 , 48) ))
+        self.first_post = TextInput(hint_text= "199.6", size_hint_y=None, height= 32, size_hint=(None, None) , size = (162 , 32))
+        grid_post.add_widget(self.first_post)
+        self.second_post = TextInput(hint_text= "199.6", size_hint_y=None, height= 32, size_hint=(None, None) , size = (162 , 32))
+        grid_post.add_widget(self.second_post)
+        grid_post.add_widget(Label(text= "результаты постановок" , color = "#02034e", size_hint_y=None, height= 32 , font_size =20, size_hint=(None, None) , size = (250 , 32) ))
         
         gl.add_widget(Label(text= "№" , color = "#02034e", size_hint_y=None, height= 32 , font_size =20 , size_hint=(None, None) , size = (68 , 32)))
         gl.add_widget(Label(text= "имя фамилия" , color = "#02034e", size_hint_y=None, height= 32 , font_size =22, size_hint=(None, None) , size = (162 , 32) ))
@@ -989,6 +1005,7 @@ class players5(Screen):
         grid_bl.add_widget(grid_per)
 
         main_bl.add_widget(bl)
+        main_bl.add_widget(grid_post)
         main_bl.add_widget(gl)
         main_bl.add_widget(grid_bl)
         main_bl.add_widget(fl2)
@@ -997,6 +1014,8 @@ class players5(Screen):
         scroll.add_widget(main_bl)
         
         self.add_widget(scroll)
+        
+        self.flag_page=True
         
     def switch_button_type(self, instance):
         new_type_throw = "-DTG"
@@ -1009,6 +1028,8 @@ class players5(Screen):
         self.manager.current = "Игра+"
 
     def math_operation(self, *args):
+        
+        self.flag_page=False
         
         self.name_list = [self.name_1, self.name_2, self.name_3, self.name_4, self.name_5]
         
@@ -1222,4 +1243,56 @@ class players5(Screen):
             self.save_info.text = f"Успешно сохранено"
         
     def switch_match_plus(self, *args):
+        
+        name_list = [self.name_1, self.name_2, self.name_3, self.name_4, self.name_5]
+        
+        listik = [[self.one_1, self.two_1, self.three_1, self.four_1, self.five_1, self.six_1, self.seven_1, self.eight_1, self.nine_1, self.one_zero_1,
+                  self.one_one_1, self.one_two_1, self.one_three_1, self.one_four_1, self.one_five_1, self.one_six_1, self.one_seven_1, self.one_eight_1, self.one_nine_1,
+                  self.two_zero_1, self.extra_one_1, self.extra_two_1, self.extra_three_1, self.extra_four_1, self.extra_five_1, self.extra_six_1], [self.one_2, self.two_2, self.three_2, self.four_2, self.five_2, self.six_2, self.seven_2, self.eight_2, self.nine_2, self.one_zero_2,
+                  self.one_one_2, self.one_two_2, self.one_three_2, self.one_four_2, self.one_five_2, self.one_six_2, self.one_seven_2, self.one_eight_2, self.one_nine_2,
+                  self.two_zero_2, self.extra_one_2, self.extra_two_2, self.extra_three_2, self.extra_four_2, self.extra_five_2, self.extra_six_2], [self.one_3, self.two_3, self.three_3, self.four_3, self.five_3, self.six_3, self.seven_3, self.eight_3, self.nine_3, self.one_zero_3,
+                  self.one_one_3, self.one_two_3, self.one_three_3, self.one_four_3, self.one_five_3, self.one_six_3, self.one_seven_3, self.one_eight_3, self.one_nine_3,
+                  self.two_zero_3, self.extra_one_3, self.extra_two_3, self.extra_three_3, self.extra_four_3, self.extra_five_3, self.extra_six_3], [self.one_4, self.two_4, self.three_4, self.four_4, self.five_4, self.six_4, self.seven_4, self.eight_4, self.nine_4, self.one_zero_4,
+                  self.one_one_4, self.one_two_4, self.one_three_4, self.one_four_4, self.one_five_4, self.one_six_4, self.one_seven_4, self.one_eight_4, self.one_nine_4,
+                  self.two_zero_4, self.extra_one_4, self.extra_two_4, self.extra_three_4, self.extra_four_4, self.extra_five_4, self.extra_six_4], [self.one_5, self.two_5, self.three_5, self.four_5, self.five_5, self.six_5, self.seven_5, self.eight_5, self.nine_5, self.one_zero_5,
+                  self.one_one_5, self.one_two_5, self.one_three_5, self.one_four_5, self.one_five_5, self.one_six_5, self.one_seven_5, self.one_eight_5, self.one_nine_5,
+                  self.two_zero_5, self.extra_one_5, self.extra_two_5, self.extra_three_5, self.extra_four_5, self.extra_five_5, self.extra_six_5]]
+        
+        type_listik = [[self.one_1_button, self.two_1_button, self.three_1_button, self.four_1_button, self.five_1_button, self.six_1_button, self.seven_1_button, self.eight_1_button, self.nine_1_button,
+                       self.one_zero_1_button, self.one_one_1_button, self.one_two_1_button, self.one_three_1_button, self.one_four_1_button, self.one_five_1_button, self.one_six_1_button, self.one_seven_1_button,
+                       self.one_eight_1_button, self.one_nine_1_button, self.two_zero_1_button, self.extra_one_1_button, self.extra_two_1_button, self.extra_three_1_button,
+                       self.extra_four_1_button, self.extra_five_1_button, self.extra_six_1_button], [self.one_2_button, self.two_2_button, self.three_2_button, self.four_2_button, self.five_2_button, self.six_2_button, self.seven_2_button, self.eight_2_button, self.nine_2_button,
+                       self.one_zero_2_button, self.one_one_2_button, self.one_two_2_button, self.one_three_2_button, self.one_four_2_button, self.one_five_2_button, self.one_six_2_button, self.one_seven_2_button,
+                       self.one_eight_2_button, self.one_nine_2_button, self.two_zero_2_button, self.extra_one_2_button, self.extra_two_2_button, self.extra_three_2_button,
+                       self.extra_four_2_button, self.extra_five_2_button, self.extra_six_2_button], [self.one_3_button, self.two_3_button, self.three_3_button, self.four_3_button, self.five_3_button, self.six_3_button, self.seven_3_button, self.eight_3_button, self.nine_3_button,
+                       self.one_zero_3_button, self.one_one_3_button, self.one_two_3_button, self.one_three_3_button, self.one_four_3_button, self.one_five_3_button, self.one_six_3_button, self.one_seven_3_button,
+                       self.one_eight_3_button, self.one_nine_3_button, self.two_zero_3_button, self.extra_one_3_button, self.extra_two_3_button, self.extra_three_3_button,
+                       self.extra_four_3_button, self.extra_five_3_button, self.extra_six_3_button], [self.one_4_button, self.two_4_button, self.three_4_button, self.four_4_button, self.five_4_button, self.six_4_button, self.seven_4_button, self.eight_4_button, self.nine_4_button,
+                       self.one_zero_4_button, self.one_one_4_button, self.one_two_4_button, self.one_three_4_button, self.one_four_4_button, self.one_five_4_button, self.one_six_4_button, self.one_seven_4_button,
+                       self.one_eight_4_button, self.one_nine_4_button, self.two_zero_4_button, self.extra_one_4_button, self.extra_two_4_button, self.extra_three_4_button,
+                       self.extra_four_4_button, self.extra_five_4_button, self.extra_six_4_button], [self.one_5_button, self.two_5_button, self.three_5_button, self.four_5_button, self.five_5_button, self.six_5_button, self.seven_5_button, self.eight_5_button, self.nine_5_button,
+                       self.one_zero_5_button, self.one_one_5_button, self.one_two_5_button, self.one_three_5_button, self.one_four_5_button, self.one_five_5_button, self.one_six_5_button, self.one_seven_5_button,
+                       self.one_eight_5_button, self.one_nine_5_button, self.two_zero_5_button, self.extra_one_5_button, self.extra_two_5_button, self.extra_three_5_button,
+                       self.extra_four_5_button, self.extra_five_5_button, self.extra_six_5_button]]
+        
+        
+        
+        for i in range(len(name_list)):
+            name_list[i].text = ""
+            for widget in listik[i] + type_listik[i]:
+                widget.text = "" if widget in listik[i] else "-"
+            if self.flag_page == False:
+                for widget in self.end_list[i]:
+                    widget.text = "."
+        if self.flag_page == False:
+            for i in range(len(self.types_throw_list)):
+                self.types_throw_list[i].text = ""
+                self.final_percentage_list[i].text = ""
+        
+        self.name_match.text = ""
+        self.name_team.text = ""
+        self.date_match.text = ""
+        
+        self.flag_page=True
+        
         self.manager.current = "Игра+"
