@@ -13,7 +13,7 @@ class players2(Screen):
         super().__init__(**kwargs)
         bl = BoxLayout(size_hint_y=None, height= 200) #height=300
         gl = GridLayout(cols= 3 , rows=2 , spacing=(1 , 1) , padding= (1 , 1 , 1 , 1), size_hint_y=None, height= 80)
-        gl2 = GridLayout(cols=7, spacing=(0 , 5), rows=39, padding= (1 , 1 , 1 , 1 ), size_hint_y=None, height= 1550) #height=1200
+        gl2 = GridLayout(cols=7, spacing=(0 , 5), rows=33, padding= (1 , 1 , 1 , 1 ), size_hint_y=None, height= 1550) #height=1200
         fl2 = BoxLayout(size_hint_y=None, height= 150, padding= (1 , 1 , 1 , 1 )) #height=200
         grid_bl =  BoxLayout(size_hint=(1, None), height=1600, padding= (1 , 1 , 1 , 800 ))
         main_bl = BoxLayout(size_hint=(1, None), height=3100) #height=1830
@@ -409,94 +409,6 @@ class players2(Screen):
         gl2.add_widget(self.two_four_2_button)
         gl2.add_widget(Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18))
         
-        gl2.add_widget(Label(text="25" , color = "#02034e", size_hint=(None, 1) , size = (68 , 10) , font_size =18 ))
-        self.two_five_1 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
-        gl2.add_widget(self.two_five_1)
-        self.two_five_1_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
-        self.two_five_1_button.bind(on_release=self.switch_button_type)
-        gl2.add_widget(self.two_five_1_button)
-        gl2.add_widget(Label(text= "end - 9" , color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50)))
-        self.two_five_2 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
-        gl2.add_widget(self.two_five_2)
-        self.two_five_2_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
-        self.two_five_2_button.bind(on_release=self.switch_button_type)
-        gl2.add_widget(self.two_five_2_button)
-        gl2.add_widget(Label(text= "end - 9" , color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50)))
-        
-        gl2.add_widget(Label(text="26" , color = "#02034e", size_hint=(None, 1) , size = (68 , 10) , font_size =18 ))
-        self.two_six_1 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
-        gl2.add_widget(self.two_six_1)
-        self.two_six_1_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
-        self.two_six_1_button.bind(on_release=self.switch_button_type)
-        gl2.add_widget(self.two_six_1_button)
-        self.end_first_9_1 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_first_9_1)
-        self.two_six_2 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
-        gl2.add_widget(self.two_six_2)
-        self.two_six_2_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
-        self.two_six_2_button.bind(on_release=self.switch_button_type)
-        gl2.add_widget(self.two_six_2_button)
-        self.end_second_9_1 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_second_9_1)
-        
-        gl2.add_widget(Label(text="27" , color = "#02034e", size_hint=(None, 1) , size = (68 , 10) , font_size =18 ))
-        self.two_seven_1 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
-        gl2.add_widget(self.two_seven_1)
-        self.two_seven_1_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
-        self.two_seven_1_button.bind(on_release=self.switch_button_type)
-        gl2.add_widget(self.two_seven_1_button)
-        gl2.add_widget(Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18))
-        self.two_seven_2 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
-        gl2.add_widget(self.two_seven_2)
-        self.two_seven_2_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
-        self.two_seven_2_button.bind(on_release=self.switch_button_type)
-        gl2.add_widget(self.two_seven_2_button)
-        gl2.add_widget(Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18))
-        
-        gl2.add_widget(Label(text="28" , color = "#02034e", size_hint=(None, 1) , size = (68 , 10) , font_size =18 ))
-        self.two_eight_1 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
-        gl2.add_widget(self.two_eight_1)
-        self.two_eight_1_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
-        self.two_eight_1_button.bind(on_release=self.switch_button_type)
-        gl2.add_widget(self.two_eight_1_button)
-        gl2.add_widget(Label(text= "end - 10" , color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50)))
-        self.two_eight_2 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
-        gl2.add_widget(self.two_eight_2)
-        self.two_eight_2_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
-        self.two_eight_2_button.bind(on_release=self.switch_button_type)
-        gl2.add_widget(self.two_eight_2_button)
-        gl2.add_widget(Label(text= "end - 10" , color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50)))
-        
-        gl2.add_widget(Label(text="29" , color = "#02034e", size_hint=(None, 1) , size = (68 , 10) , font_size =18 ))
-        self.two_nine_1 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
-        gl2.add_widget(self.two_nine_1)
-        self.two_nine_1_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
-        self.two_nine_1_button.bind(on_release=self.switch_button_type)
-        gl2.add_widget(self.two_nine_1_button)
-        self.end_first_10_1 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_first_10_1)
-        self.two_nine_2 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
-        gl2.add_widget(self.two_nine_2)
-        self.two_nine_2_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
-        self.two_nine_2_button.bind(on_release=self.switch_button_type)
-        gl2.add_widget(self.two_nine_2_button)
-        self.end_second_10_1 = Label(text = "." ,  color = "#02034e", font_size =18, size_hint=(None, None) , size = (75 , 50))
-        gl2.add_widget(self.end_second_10_1)
-        
-        gl2.add_widget(Label(text="30" , color = "#02034e", size_hint=(None, 1) , size = (68 , 10) , font_size =18 ))
-        self.three_zero_1 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
-        gl2.add_widget(self.three_zero_1)
-        self.three_zero_1_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
-        self.three_zero_1_button.bind(on_release=self.switch_button_type)
-        gl2.add_widget(self.three_zero_1_button)
-        gl2.add_widget(Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18))
-        self.three_zero_2 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
-        gl2.add_widget(self.three_zero_2)
-        self.three_zero_2_button = Button(text="-", size_hint=(None, None) , size = (44 , 50))
-        self.three_zero_2_button.bind(on_release=self.switch_button_type)
-        gl2.add_widget(self.three_zero_2_button)
-        gl2.add_widget(Label(text = "." ,  color = "#02034e", size_hint=(None, None) , size = (75 , 50) , font_size =18))
-        
         gl2.add_widget(Label(text="extra-1" , color = "#02034e", size_hint=(None, None) , size = (68 , 50) , font_size =18 ))
         self.extra_one_1 = TextInput(hint_text= "от 0 до 4", input_filter=inp_filter, size_hint=(None, None) , size = (45 , 50))
         gl2.add_widget(self.extra_one_1)
@@ -706,20 +618,20 @@ class players2(Screen):
         
         self.listik = [[self.one_1.text, self.two_1.text, self.three_1.text, self.four_1.text, self.five_1.text, self.six_1.text, self.seven_1.text, self.eight_1.text, self.nine_1.text, self.one_zero_1.text,
                   self.one_one_1.text, self.one_two_1.text, self.one_three_1.text, self.one_four_1.text, self.one_five_1.text, self.one_six_1.text, self.one_seven_1.text, self.one_eight_1.text, self.one_nine_1.text,
-                  self.two_zero_1.text, self.two_one_1.text, self.two_two_1.text, self.two_three_1.text, self.two_four_1.text, self.two_five_1.text, self.two_six_1.text, self.two_seven_1.text, self.two_eight_1.text, self.two_nine_1.text, self.three_zero_1.text, self.extra_one_1.text, self.extra_two_1.text, self.extra_three_1.text, self.extra_four_1.text, self.extra_five_1.text, self.extra_six_1.text, self.extra_seven_1.text, self.extra_eight_1.text, self.extra_nine_1.text], 
+                  self.two_zero_1.text, self.two_one_1.text, self.two_two_1.text, self.two_three_1.text, self.two_four_1.text, self.extra_one_1.text, self.extra_two_1.text, self.extra_three_1.text, self.extra_four_1.text, self.extra_five_1.text, self.extra_six_1.text, self.extra_seven_1.text, self.extra_eight_1.text, self.extra_nine_1.text],
                        [self.one_2.text, self.two_2.text, self.three_2.text, self.four_2.text, self.five_2.text, self.six_2.text, self.seven_2.text, self.eight_2.text, self.nine_2.text, self.one_zero_2.text,
                   self.one_one_2.text, self.one_two_2.text, self.one_three_2.text, self.one_four_2.text, self.one_five_2.text, self.one_six_2.text, self.one_seven_2.text, self.one_eight_2.text, self.one_nine_2.text,
-                  self.two_zero_2.text, self.two_one_2.text, self.two_two_2.text, self.two_three_2.text, self.two_four_2.text, self.two_five_2.text, self.two_six_2.text, self.two_seven_2.text, self.two_eight_2.text, self.two_nine_2.text, self.three_zero_2.text, self.extra_one_2.text, self.extra_two_2.text, self.extra_three_2.text, self.extra_four_2.text, self.extra_five_2.text, self.extra_six_2.text, self.extra_seven_2.text, self.extra_eight_2.text, self.extra_nine_2.text]]
+                  self.two_zero_2.text, self.two_one_2.text, self.two_two_2.text, self.two_three_2.text, self.two_four_2.text, self.extra_one_2.text, self.extra_two_2.text, self.extra_three_2.text, self.extra_four_2.text, self.extra_five_2.text, self.extra_six_2.text, self.extra_seven_2.text, self.extra_eight_2.text, self.extra_nine_2.text]]
         
         self.type_listik = [[self.one_1_button.text, self.two_1_button.text, self.three_1_button.text, self.four_1_button.text, self.five_1_button.text, self.six_1_button.text, self.seven_1_button.text, self.eight_1_button.text, self.nine_1_button.text,
                        self.one_zero_1_button.text, self.one_one_1_button.text, self.one_two_1_button.text, self.one_three_1_button.text, self.one_four_1_button.text, self.one_five_1_button.text, self.one_six_1_button.text, self.one_seven_1_button.text,
-                       self.one_eight_1_button.text, self.one_nine_1_button.text, self.two_zero_1_button.text, self.two_one_1_button.text, self.two_two_1_button.text, self.two_three_1_button.text, self.two_four_1_button.text, self.two_five_1_button.text, self.two_six_1_button.text, self.two_seven_1_button.text, self.two_eight_1_button.text, self.two_nine_1_button.text, self.three_zero_1_button.text, self.extra_one_1_button.text, self.extra_two_1_button.text, self.extra_three_1_button.text, self.extra_four_1_button.text, self.extra_five_1_button.text, self.extra_six_1_button.text, self.extra_seven_1_button.text, self.extra_eight_1_button.text, self.extra_nine_1_button.text], 
+                       self.one_eight_1_button.text, self.one_nine_1_button.text, self.two_zero_1_button.text, self.two_one_1_button.text, self.two_two_1_button.text, self.two_three_1_button.text, self.two_four_1_button.text, self.extra_one_1_button.text, self.extra_two_1_button.text, self.extra_three_1_button.text, self.extra_four_1_button.text, self.extra_five_1_button.text, self.extra_six_1_button.text, self.extra_seven_1_button.text, self.extra_eight_1_button.text, self.extra_nine_1_button.text], 
                             [self.one_2_button.text, self.two_2_button.text, self.three_2_button.text, self.four_2_button.text, self.five_2_button.text, self.six_2_button.text, self.seven_2_button.text, self.eight_2_button.text, self.nine_2_button.text,
                        self.one_zero_2_button.text, self.one_one_2_button.text, self.one_two_2_button.text, self.one_three_2_button.text, self.one_four_2_button.text, self.one_five_2_button.text, self.one_six_2_button.text, self.one_seven_2_button.text,
-                       self.one_eight_2_button.text, self.one_nine_2_button.text, self.two_zero_2_button.text, self.two_one_2_button.text, self.two_two_2_button.text, self.two_three_2_button.text, self.two_four_2_button.text, self.two_five_2_button.text, self.two_six_2_button.text, self.two_seven_2_button.text, self.two_eight_2_button.text, self.two_nine_2_button.text, self.three_zero_2_button.text, self.extra_one_2_button.text, self.extra_two_2_button.text, self.extra_three_2_button.text, self.extra_four_2_button.text, self.extra_five_2_button.text, self.extra_six_2_button.text, self.extra_seven_2_button.text, self.extra_eight_2_button.text, self.extra_nine_2_button.text]]
+                       self.one_eight_2_button.text, self.one_nine_2_button.text, self.two_zero_2_button.text, self.two_one_2_button.text, self.two_two_2_button.text, self.two_three_2_button.text, self.two_four_2_button.text, self.extra_one_2_button.text, self.extra_two_2_button.text, self.extra_three_2_button.text, self.extra_four_2_button.text, self.extra_five_2_button.text, self.extra_six_2_button.text, self.extra_seven_2_button.text, self.extra_eight_2_button.text, self.extra_nine_2_button.text]]
         
-        self.end_list = [[self.end_first_1_1, self.end_first_2_1, self.end_first_3_1, self.end_first_4_1, self.end_first_5_1, self.end_first_6_1, self.end_first_7_1, self.end_first_8_1, self.end_first_9_1, self.end_first_10_1, self.end_first_ex_1_1, self.end_first_ex_2_1, self.end_first_ex_3_1],
-                        [self.end_second_1_1, self.end_second_2_1, self.end_second_3_1, self.end_second_4_1, self.end_second_5_1, self.end_second_6_1, self.end_second_7_1, self.end_second_8_1, self.end_second_9_1, self.end_second_10_1, self.end_second_ex_1_1, self.end_second_ex_2_1, self.end_second_ex_3_1]]
+        self.end_list = [[self.end_first_1_1, self.end_first_2_1, self.end_first_3_1, self.end_first_4_1, self.end_first_5_1, self.end_first_6_1, self.end_first_7_1, self.end_first_8_1, self.end_first_ex_1_1, self.end_first_ex_2_1, self.end_first_ex_3_1],
+                        [self.end_second_1_1, self.end_second_2_1, self.end_second_3_1, self.end_second_4_1, self.end_second_5_1, self.end_second_6_1, self.end_second_7_1, self.end_second_8_1, self.end_second_ex_1_1, self.end_second_ex_2_1, self.end_second_ex_3_1]]
         
         self.final_percentage_list = [self.final_percentage_1, self.final_percentage_2]
         self.types_throw_list = [self.types_throw_1, self.types_throw_2]
@@ -841,10 +753,10 @@ class players2(Screen):
                 return query
             
             column_names = ['match_id', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty', 'twenty_one', 
-                    'twenty_two', 'twenty_three', 'twenty_four', 'twenty_five', 'twenty_six', 'twenty_seven', 'twenty_eight', 'twenty_nine', 'thirty', 'extra_one', 'extra_two', 'extra_three', 'extra_four', 'extra_five', 'extra_six', 'extra_seven', 'extra_eight', 'extra_nine']
+                    'twenty_two', 'twenty_three', 'twenty_four', 'extra_one', 'extra_two', 'extra_three', 'extra_four', 'extra_five', 'extra_six', 'extra_seven', 'extra_eight', 'extra_nine']
             
             column_names_2 = ['points_id', 'dro_persent', 'take_persent', 'guard_persent', 'final_persent', 'end_1_persent', 'end_2_persent', 'end_3_persent', 'end_4_persent', 'end_5_persent', 'end_6_persent',
-                              'end_7_persent', 'end_8_persent', 'end_9_persent', 'end_10_persent', 'ex_1_end_persent', 'ex_2_end_persent', 'ex_3_end_persent']
+                              'end_7_persent', 'end_8_persent', 'ex_1_end_persent', 'ex_2_end_persent', 'ex_3_end_persent']
             
             name_match = self.name_match.text
             date_game = self.date_match.text
@@ -896,7 +808,7 @@ class players2(Screen):
                     continue
                 else:
                     column_names = ['match_id', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty', 'twenty_one', 
-                        'twenty_two', 'twenty_three', 'twenty_four', 'twenty_five', 'twenty_six', 'twenty_seven', 'twenty_eight', 'twenty_nine', 'thirty', 'extra_one', 'extra_two', 'extra_three', 'extra_four', 'extra_five', 'extra_six', 'extra_seven', 'extra_eight', 'extra_nine']
+                        'twenty_two', 'twenty_three', 'twenty_four', 'extra_one', 'extra_two', 'extra_three', 'extra_four', 'extra_five', 'extra_six', 'extra_seven', 'extra_eight', 'extra_nine']
                 
             
             self.conn.commit()
@@ -909,18 +821,18 @@ class players2(Screen):
         
         listik = [[self.one_1, self.two_1, self.three_1, self.four_1, self.five_1, self.six_1, self.seven_1, self.eight_1, self.nine_1, self.one_zero_1,
                   self.one_one_1, self.one_two_1, self.one_three_1, self.one_four_1, self.one_five_1, self.one_six_1, self.one_seven_1, self.one_eight_1, self.one_nine_1,
-                  self.two_zero_1, self.two_one_1, self.two_two_1, self.two_three_1, self.two_four_1, self.two_five_1, self.two_six_1, self.two_seven_1, self.two_eight_1, self.two_nine_1, self.three_zero_1, self.extra_one_1, self.extra_two_1, self.extra_three_1, self.extra_four_1, self.extra_five_1, self.extra_six_1, self.extra_seven_1, self.extra_eight_1, self.extra_nine_1], 
+                  self.two_zero_1, self.two_one_1, self.two_two_1, self.two_three_1, self.two_four_1, self.extra_one_1, self.extra_two_1, self.extra_three_1, self.extra_four_1, self.extra_five_1, self.extra_six_1, self.extra_seven_1, self.extra_eight_1, self.extra_nine_1], 
                   [self.one_2, self.two_2, self.three_2, self.four_2, self.five_2, self.six_2, self.seven_2, self.eight_2, self.nine_2, self.one_zero_2,
                   self.one_one_2, self.one_two_2, self.one_three_2, self.one_four_2, self.one_five_2, self.one_six_2, self.one_seven_2, self.one_eight_2, self.one_nine_2,
-                  self.two_zero_2, self.two_one_2, self.two_two_2, self.two_three_2, self.two_four_2, self.two_five_2, self.two_six_2, self.two_seven_2, self.two_eight_2, self.two_nine_2, self.three_zero_2, self.extra_one_2, self.extra_two_2, self.extra_three_2, self.extra_four_2, self.extra_five_2, self.extra_six_2, self.extra_seven_2, self.extra_eight_2, self.extra_nine_2]]
+                  self.two_zero_2, self.two_one_2, self.two_two_2, self.two_three_2, self.two_four_2, self.extra_one_2, self.extra_two_2, self.extra_three_2, self.extra_four_2, self.extra_five_2, self.extra_six_2, self.extra_seven_2, self.extra_eight_2, self.extra_nine_2]]
         
         type_listik = [[self.one_1_button, self.two_1_button, self.three_1_button, self.four_1_button, self.five_1_button, self.six_1_button, self.seven_1_button, self.eight_1_button, self.nine_1_button,
                        self.one_zero_1_button, self.one_one_1_button, self.one_two_1_button, self.one_three_1_button, self.one_four_1_button, self.one_five_1_button, self.one_six_1_button, self.one_seven_1_button,
-                       self.one_eight_1_button, self.one_nine_1_button, self.two_zero_1_button, self.two_one_1_button, self.two_two_1_button, self.two_three_1_button, self.two_four_1_button, self.two_five_1_button, self.two_six_1_button, self.two_seven_1_button, self.two_eight_1_button, self.two_nine_1_button, self.three_zero_1_button, self.extra_one_1_button, self.extra_two_1_button,
+                       self.one_eight_1_button, self.one_nine_1_button, self.two_zero_1_button, self.two_one_1_button, self.two_two_1_button, self.two_three_1_button, self.two_four_1_button, self.extra_one_1_button, self.extra_two_1_button,
                        self.extra_three_1_button, self.extra_four_1_button, self.extra_five_1_button, self.extra_six_1_button, self.extra_seven_1_button, self.extra_eight_1_button, self.extra_nine_1_button], 
                        [self.one_2_button, self.two_2_button, self.three_2_button, self.four_2_button, self.five_2_button, self.six_2_button, self.seven_2_button, self.eight_2_button, self.nine_2_button,
                        self.one_zero_2_button, self.one_one_2_button, self.one_two_2_button, self.one_three_2_button, self.one_four_2_button, self.one_five_2_button, self.one_six_2_button, self.one_seven_2_button,
-                       self.one_eight_2_button, self.one_nine_2_button, self.two_zero_2_button, self.two_one_2_button, self.two_two_2_button, self.two_three_2_button, self.two_four_2_button, self.two_five_2_button, self.two_six_2_button, self.two_seven_2_button, self.two_eight_2_button, self.two_nine_2_button, self.three_zero_2_button, self.extra_one_2_button, self.extra_two_2_button,
+                       self.one_eight_2_button, self.one_nine_2_button, self.two_zero_2_button, self.two_one_2_button, self.two_two_2_button, self.two_three_2_button, self.two_four_2_button, self.extra_one_2_button, self.extra_two_2_button,
                        self.extra_three_2_button, self.extra_four_2_button, self.extra_five_2_button, self.extra_six_2_button, self.extra_seven_2_button, self.extra_eight_2_button, self.extra_nine_2_button]]        
                 
         for i in range(len(name_list)):
