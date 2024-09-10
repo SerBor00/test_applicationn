@@ -86,6 +86,10 @@ cursor.execute("""
 cursor.execute("""
     CREATE TABLE IF NOT EXISTS match_persteges_info (
     points_id INTEGER,
+    dro_persent REAL,
+    take_persent REAL,
+    guard_persent REAL,
+    final_persent REAL,
     end_1_persent REAL,
     end_2_persent REAL,
     end_3_persent REAL,
@@ -99,10 +103,6 @@ cursor.execute("""
     ex_1_end_persent REAL,
     ex_2_end_persent REAL,
     ex_3_end_persent REAL,
-    dro_persent REAL,
-    take_persent REAL,
-    guard_persent REAL,
-    final_persent REAL,
     FOREIGN KEY (points_id) REFERENCES points(points_id)
     )        
 """)

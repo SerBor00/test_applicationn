@@ -714,6 +714,7 @@ class players2(Screen):
                     
                     self.final_percentage_list[i].text = f"Процент: {helper}"
                     self.types_throw_list[i].text = f"Dro: {sum_dro} \nTake: {sum_take} \nGuard: {sum_guard}"
+                    print(self.persentages_stat)
                 
                 else:
                     self.final_percentage_list[i].text = f"Ошибка, {helper}"

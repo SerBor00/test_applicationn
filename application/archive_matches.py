@@ -68,7 +68,6 @@ class archive_matches(Screen):
                     """, (player_id[i][0], match_data[0],))
                     
                 perstenges=self.cursor.fetchall()
-                print(perstenges)
                 button = Button(text=f"Дата: {match_data[1]} Команды: {match_data[2]} Турнир: {match_data[3]}")
                 button.bind(on_press=lambda instance, match_data=match_data, names=names, perstenges=perstenges: self.show_popup(match_data, names, perstenges))
                 bl.add_widget(button)
@@ -80,14 +79,67 @@ class archive_matches(Screen):
         self.add_widget(bl)
         
     def show_popup(self, match_data, names, perstenges):
+            if len(names) == 2:
+                name_percent=["Dro %", "Take %", "Guard %", "final %", "End 1", "End 2", "End 3", "End 4", "End 5", "End 6", "End 7", "End 8", "Ex-end 1", "Ex-end 2", "Ex-end 3"]
+            else:
+                name_percent=["Dro %", "Take %", "Guard %", "final %", "End 1", "End 2", "End 3", "End 4", "End 5", "End 6", "End 7", "End 8", "End 9", "End 10", "Ex-end 1", "Ex-end 2", "Ex-end 3"]
+                
+            for i in range(len(perstenges)):
+                perstenges[i] = perstenges[i][1:]
+                
             popup = Popup(title=f"Матч: {match_data[3]}")
             popup.content = BoxLayout(orientation='vertical')
             popup.content.add_widget(Label(text=f"Команды: {match_data[2]}"))
-            gl = GridLayout(cols=len(names), rows=2)
+            gl = GridLayout(cols=len(names), rows=1)
             for name in names:
-                print(name, perstenges, sep="\n")
-                gl.add_widget(Label(text = f"{name}"))
+                gl.add_widget(Label(text = f"{name[0]}"))
+            gl2 = GridLayout(cols=len(names)*2 , rows=len(name_percent))
+            if len(names) == 2:
+                range_h = 0
+                for i in range(len(name_percent)+2):
+                    if i == 12:
+                        continue
+                    elif i == 13:
+                        range_h = 2
+                        continue
+                    else:
+                        gl2.add_widget(Label(text=f"{name_percent[i-range_h]}"))
+                        gl2.add_widget(Label(text=f"{perstenges[0][i]}"))
+                        gl2.add_widget(Label(text=f"{name_percent[i-range_h]}"))
+                        gl2.add_widget(Label(text=f"{perstenges[1][i]}"))
+            elif len(names) == 3:
+                for i in range(len(name_percent)):
+                    gl2.add_widget(Label(text=f"{name_percent[i]}"))
+                    gl2.add_widget(Label(text=f"{perstenges[0][i]}"))
+                    gl2.add_widget(Label(text=f"{name_percent[i]}"))
+                    gl2.add_widget(Label(text=f"{perstenges[1][i]}"))
+                    gl2.add_widget(Label(text=f"{name_percent[i]}"))
+                    gl2.add_widget(Label(text=f"{perstenges[2][i]}"))
+            elif len(names) == 4:
+                for i in range(len(name_percent)):
+                    gl2.add_widget(Label(text=f"{name_percent[i]}"))
+                    gl2.add_widget(Label(text=f"{perstenges[0][i]}"))
+                    gl2.add_widget(Label(text=f"{name_percent[i]}"))
+                    gl2.add_widget(Label(text=f"{perstenges[1][i]}"))
+                    gl2.add_widget(Label(text=f"{name_percent[i]}"))
+                    gl2.add_widget(Label(text=f"{perstenges[2][i]}"))
+                    gl2.add_widget(Label(text=f"{name_percent[i]}"))
+                    gl2.add_widget(Label(text=f"{perstenges[3][i]}"))
+            else:
+                for i in range(len(name_percent)):
+                    gl2.add_widget(Label(text=f"{name_percent[i]}"))
+                    gl2.add_widget(Label(text=f"{perstenges[0][i]}"))
+                    gl2.add_widget(Label(text=f"{name_percent[i]}"))
+                    gl2.add_widget(Label(text=f"{perstenges[1][i]}"))
+                    gl2.add_widget(Label(text=f"{name_percent[i]}"))
+                    gl2.add_widget(Label(text=f"{perstenges[2][i]}"))
+                    gl2.add_widget(Label(text=f"{name_percent[i]}"))
+                    gl2.add_widget(Label(text=f"{perstenges[3][i]}"))
+                    gl2.add_widget(Label(text=f"{name_percent[i]}"))
+                    gl2.add_widget(Label(text=f"{perstenges[4][i]}"))
+            
             popup.content.add_widget(gl)
+            popup.content.add_widget(gl2)
 
             popup.content.add_widget(Button(text="Закрыть", on_press=lambda instance: popup.dismiss()))
             popup.open()
