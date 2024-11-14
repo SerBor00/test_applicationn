@@ -11,19 +11,19 @@ class archive_players(Screen):
         super().__init__(**kwargs)
         bl = BoxLayout()
         
-        self.search = TextInput(hint_text = "Имя и Фамилия игрока")
+        self.search = TextInput(hint_text= "имя фамилия",foreground_color = ('#02034e'),  padding_y = (4 , 0) , halign = ('center') , cursor_color = ("#02034e") , border = (0.1 , 0.1 , 0.1 , 0.1)  ,hint_text_color = "#6188a3", font_name = 'application/shrift/TT Norms Pro Medium.otf', multiline=False, size_hint_y=None, height= 32, size_hint=(None, None) , size = (400 , 32))
         bl.add_widget(self.search)
         
         self.conn = sqlite3.connect(path_db())
         self.cursor = self.conn.cursor()
         
-        self.cursor.execute("SELECT * FROM players")
+        self.cursor.execute("SELECT first_and_second_name , date_of_born , gender FROM players")
         self.players = self.cursor.fetchall()
         
         
         
         for i in self.players:
-            bl.add_widget(Label(text=f"Игроки: {i}" , color = "#02034e", size_hint_y=None, height= 64 , font_size =24 , size_hint=(None, None) , size = (230 , 64)))
+            bl.add_widget(Label(text=f"Игроки: {i}" , color = "#02034e", size_hint_y=None, height= 64 , font_size =20 , size_hint=(None, None) , size = (500 , 64)))
         
         archive = Button(text="Назад", size_hint=(None, None) , size = (270 , 60))
         archive.bind(on_release=self.switch_archive)
@@ -34,7 +34,7 @@ class archive_players(Screen):
     def on_search (self, *args):
         search = self.search.text.title()
         self.cursor.execute("""
-            SELECT * FROM players WHERE first_and_second_name = ?    
+            SELECT first_and_second_name , date_of_born , gender FROM players WHERE first_and_second_name = ?    
         """, (search,))
         self.players = self.cursor.fetchone()
         

@@ -16,9 +16,9 @@ cursor.execute("""
 cursor.execute("""
     CREATE TABLE IF NOT EXISTS matches (
     match_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name_of_game TEXT NOT NULL,
     date_of_game DATE NOT NULL,
-    name_of_team TEXT NOT NULL,
-    name_of_game TEXT NOT NULL
+    name_of_team TEXT NOT NULL
     )
 """)
 
@@ -60,6 +60,12 @@ cursor.execute("""
     twenty_two INTEGER,
     twenty_three INTEGER,
     twenty_four INTEGER,
+    twenty_five INTEGER,
+    twenty_six INTEGER,
+    twenty_seven INTEGER,
+    twenty_eight INTEGER,
+    twenty_nine INTEGER,
+    thirty INTEGER,
     extra_one INTEGER,
     extra_two INTEGER,
     extra_three INTEGER,

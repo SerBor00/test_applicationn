@@ -13,19 +13,19 @@ class player_plus(Screen):
         bl2 = BoxLayout(size_hint=(1, None), height=700, padding= (100 , 1 , 1 , 1), spacing= 20 )        
         bl = BoxLayout(size_hint=(1, None), height=200 , padding= (100 , 1 , 1 , 1))
                 
-        high_text = Label(text= "РЕГИСТРАЦИЯ" , color = "#02034e", size_hint_y=None, height= 32 , font_size =32, size_hint=(None, None) , size = (300 , 32))
+        high_text = Label(text= "РЕГИСТРАЦИЯ" , color = "#02034e", size_hint_y=None, height= 32 , font_size =32, size_hint=(None, None) , size = (300 , 32) , font_name = 'application/shrift/TT Norms Pro Medium.otf')
         bl2.add_widget(high_text)
         
-        bl2.add_widget(Label(text="имя и фамилия" , color = "#02034e", size_hint_y=None, height= 32 , font_size =26, size_hint=(None, None) , size = (300 , 32)))        
-        self.namer = TextInput(hint_text= "Вася Пупкин", multiline=False, size_hint_y=None, height= 32, size_hint=(None, None) , size = (300 , 32), padding= (1 , 1 , 1 , 1 ), font_size =25)
+        bl2.add_widget(Label(text="имя и фамилия" , color = "#02034e", size_hint_y=None, height= 32 , font_size =26, size_hint=(None, None) , size = (300 , 32) , font_name = 'application/shrift/TT Norms Pro Medium.otf'))        
+        self.namer = TextInput(hint_text= "Вася Пупкин", multiline=False,foreground_color = ('#02034e'),  padding_y = (4 , 0) , halign = ('center') , cursor_color = ("#02034e") , border = (0.1 , 0.1 , 0.1 , 0.1)  ,hint_text_color = "#6188a3", font_name = 'application/shrift/TT Norms Pro Medium.otf', size_hint_y=None, height= 32, size_hint=(None, None) , size = (300 , 32) , font_size = 20)
         bl2.add_widget(self.namer)
         
-        bl2.add_widget(Label(text= "дата рождения" , color = "#02034e", size_hint_y=None, height= 32 , font_size =26, size_hint=(None, None) , size = (300 , 32)))
-        self.date = TextInput(hint_text= "дд.мм.гггг", multiline=False, size_hint_y=None, height= 32, size_hint=(None, None) , size = (300 , 32), padding= (92 , 1 , 1 , 1), font_size =25)
+        bl2.add_widget(Label(text= "дата рождения" , color = "#02034e", size_hint_y=None, height= 32 , font_size =26, size_hint=(None, None) , size = (300 , 32) , font_name = 'application/shrift/TT Norms Pro Medium.otf'))
+        self.date = TextInput(hint_text= "дд.мм.гггг", multiline=False,foreground_color = ('#02034e'),  padding_y = (4 , 0) , halign = ('center') , cursor_color = ("#02034e") , border = (0.1 , 0.1 , 0.1 , 0.1)  ,hint_text_color = "#6188a3", font_name = 'application/shrift/TT Norms Pro Medium.otf', size_hint_y=None, height= 32, size_hint=(None, None) , size = (300 , 32) , font_size = 20)
         bl2.add_widget(self.date)
         
-        bl2.add_widget(Label(text= "пол" , color = "#02034e", size_hint_y=None, height= 32 , font_size =26, size_hint=(None, None) , size = (300 , 32)))
-        self.gender = TextInput(hint_text= "муж / жен", multiline=False, size_hint_y=None, height= 32, size_hint=(None, None) , size = (300 , 32), padding= (88 , 1 , 1 , 1), font_size =25)
+        bl2.add_widget(Label(text= "пол игрока" , color = "#02034e", size_hint_y=None, height= 32 , font_size =26, size_hint=(None, None) , size = (300 , 32) , font_name = 'application/shrift/TT Norms Pro Medium.otf'))
+        self.gender = TextInput(hint_text= "муж / жен", multiline=False,foreground_color = ('#02034e'),  padding_y = (4 , 0) , halign = ('center') , cursor_color = ("#02034e") , border = (0.1 , 0.1 , 0.1 , 0.1)  ,hint_text_color = "#6188a3", font_name = 'application/shrift/TT Norms Pro Medium.otf', size_hint_y=None, height= 32, size_hint=(None, None) , size = (300 , 32) , font_size = 20)
         bl2.add_widget(self.gender)
         
         checkpoint = Button(text= "сохранить" , size_hint=(None, None) , size = (300 , 60))
